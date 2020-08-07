@@ -7,6 +7,7 @@ void main() {
 }
 
 //solwayTextTheme
+//heeboTextTheme
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.cyan,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        textTheme: GoogleFonts.dmSansTextTheme(
+        textTheme: GoogleFonts.heeboTextTheme(
           Theme.of(context).textTheme,
         ),
       ),
@@ -106,11 +107,11 @@ class BookList extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-          child: Text("Section",
-              style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold)),
+          child: Text("Featured",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
         ),
         Container(
-          height: 190,
+          height: 200,
           child: ListView.builder(
             padding: EdgeInsets.all(20),
             itemExtent: 110,
@@ -125,13 +126,18 @@ class BookList extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          decoration: new BoxDecoration(
+                          clipBehavior: Clip.hardEdge,
+                          decoration: BoxDecoration(
                               color: Colors.green,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
-                          // color: Colors.blue,
                           height: 105,
                           width: 90,
+                          child: Image.asset(
+                            "assets/images/rd_cbucket1.jpg",
+                            fit: BoxFit.cover,
+                            alignment: Alignment.topCenter,
+                          ),
                         ),
                         SizedBox(height: 5),
                         Text(
