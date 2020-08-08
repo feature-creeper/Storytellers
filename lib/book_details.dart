@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:storytellers/role_select.dart';
 import 'package:stretchy_header/stretchy_header.dart';
 
 class BookDetails extends StatefulWidget {
@@ -10,6 +11,13 @@ class BookDetails extends StatefulWidget {
 class _BookDetailsState extends State<BookDetails> {
   void goHome() {
     Navigator.pop(context);
+  }
+
+  void goToRoleSelect() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => RoleSelect()),
+    );
   }
 
   @override
@@ -66,7 +74,9 @@ class _BookDetailsState extends State<BookDetails> {
               left: false,
               top: false,
               child: FlatButton(
-                onPressed: () => print("YO"),
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                onPressed: goToRoleSelect,
                 child: Text(
                   "Let's read!",
                   style: TextStyle(color: Colors.white, fontSize: 25),
@@ -85,17 +95,43 @@ class _BookMainDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+      padding: const EdgeInsets.fromLTRB(14, 10, 14, 10),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         SizedBox(height: 10),
         Text("Book title",
-            style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
-        SizedBox(height: 5),
+            style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold)),
+        // SizedBox(height: 5),
         Text(
           "Author",
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.normal),
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.normal),
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 14),
+        Row(
+          children: [
+            Text(
+              "For ages  ",
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              "8+",
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.normal),
+            ),
+          ],
+        ),
+        SizedBox(height: 6),
+        Row(
+          children: [
+            Text(
+              "Read time  ",
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              "100 mins",
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.normal),
+            ),
+          ],
+        ),
+        SizedBox(height: 30),
         Text(
           "Eleven-year-old Charlie Bucket is very poor and lives in a small house with his parents and four grandparents. One day, Grandpa Joe tells him about the legendary and eccentric chocolatier Willy Wonka and all the wonderful sweets and chocolates.",
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
