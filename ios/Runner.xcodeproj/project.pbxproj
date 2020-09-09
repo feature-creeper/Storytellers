@@ -3,12 +3,44 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
+		69A49F82250783FB000D1579 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A49F81250783FB000D1579 /* ViewController.swift */; };
+		69A49F8625078E1A000D1579 /* DeepAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A49F84250786D0000D1579 /* DeepAR.framework */; };
+		69A49F8725078E1A000D1579 /* DeepAR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 69A49F84250786D0000D1579 /* DeepAR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		69A49FA82507968F000D1579 /* aviators in Resources */ = {isa = PBXBuildFile; fileRef = 69A49FA5250790EA000D1579 /* aviators */; };
+		69A49FA92507968F000D1579 /* bcgSeg in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F8C250790EA000D1579 /* bcgSeg */; };
+		69A49FAA2507968F000D1579 /* bigmouth in Resources */ = {isa = PBXBuildFile; fileRef = 69A49FA7250790EA000D1579 /* bigmouth */; };
+		69A49FAB2507968F000D1579 /* bleachbypass in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F9B250790EA000D1579 /* bleachbypass */; };
+		69A49FAC25079690000D1579 /* blizzard in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F9E250790EA000D1579 /* blizzard */; };
+		69A49FAD25079690000D1579 /* dalmatian in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F92250790EA000D1579 /* dalmatian */; };
+		69A49FAE25079690000D1579 /* drawingmanga in Resources */ = {isa = PBXBuildFile; fileRef = 69A49FA0250790EA000D1579 /* drawingmanga */; };
+		69A49FAF25079690000D1579 /* fatify in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F8D250790EA000D1579 /* fatify */; };
+		69A49FB025079690000D1579 /* filmcolorperfection in Resources */ = {isa = PBXBuildFile; fileRef = 69A49FA1250790EA000D1579 /* filmcolorperfection */; };
+		69A49FB125079690000D1579 /* fire in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F93250790EA000D1579 /* fire */; };
+		69A49FB225079690000D1579 /* flowers in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F98250790EA000D1579 /* flowers */; };
+		69A49FB325079690000D1579 /* grumpycat in Resources */ = {isa = PBXBuildFile; fileRef = 69A49FA6250790EA000D1579 /* grumpycat */; };
+		69A49FB425079690000D1579 /* heart in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F96250790EA000D1579 /* heart */; };
+		69A49FB525079690000D1579 /* koala in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F9D250790EA000D1579 /* koala */; };
+		69A49FB625079690000D1579 /* lion in Resources */ = {isa = PBXBuildFile; fileRef = 69A49FA2250790EA000D1579 /* lion */; };
+		69A49FB725079690000D1579 /* look2 in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F8E250790EA000D1579 /* look2 */; };
+		69A49FB825079690000D1579 /* mudMask in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F8B250790EA000D1579 /* mudMask */; };
+		69A49FB925079690000D1579 /* obama in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F95250790EA000D1579 /* obama */; };
+		69A49FBA25079690000D1579 /* pug in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F97250790EA000D1579 /* pug */; };
+		69A49FBB25079690000D1579 /* rain in Resources */ = {isa = PBXBuildFile; fileRef = 69A49FA4250790EA000D1579 /* rain */; };
+		69A49FBC25079690000D1579 /* realvhs in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F9F250790EA000D1579 /* realvhs */; };
+		69A49FBD25079690000D1579 /* sepia in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F99250790EA000D1579 /* sepia */; };
+		69A49FBE25079690000D1579 /* slash in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F90250790EA000D1579 /* slash */; };
+		69A49FBF25079690000D1579 /* sleepingmask in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F9C250790EA000D1579 /* sleepingmask */; };
+		69A49FC025079690000D1579 /* smallface in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F9A250790EA000D1579 /* smallface */; };
+		69A49FC125079690000D1579 /* teddycigar in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F91250790EA000D1579 /* teddycigar */; };
+		69A49FC225079690000D1579 /* tripleface in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F8F250790EA000D1579 /* tripleface */; };
+		69A49FC325079690000D1579 /* tv80 in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F94250790EA000D1579 /* tv80 */; };
+		69A49FC425079690000D1579 /* twistedFace in Resources */ = {isa = PBXBuildFile; fileRef = 69A49FA3250790EA000D1579 /* twistedFace */; };
 		747D40F5EAD50CA47D3ED24F /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78157AB2D04BFCCE265C0A9 /* Pods_Runner.framework */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
@@ -23,6 +55,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				69A49F8725078E1A000D1579 /* DeepAR.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -33,6 +66,37 @@
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
+		69A49F81250783FB000D1579 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		69A49F84250786D0000D1579 /* DeepAR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DeepAR.framework; sourceTree = "<group>"; };
+		69A49F8B250790EA000D1579 /* mudMask */ = {isa = PBXFileReference; lastKnownFileType = file; name = mudMask; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/mudMask"; sourceTree = "<group>"; };
+		69A49F8C250790EA000D1579 /* bcgSeg */ = {isa = PBXFileReference; lastKnownFileType = file; name = bcgSeg; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/bcgSeg"; sourceTree = "<group>"; };
+		69A49F8D250790EA000D1579 /* fatify */ = {isa = PBXFileReference; lastKnownFileType = file; name = fatify; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/fatify"; sourceTree = "<group>"; };
+		69A49F8E250790EA000D1579 /* look2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = look2; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/look2"; sourceTree = "<group>"; };
+		69A49F8F250790EA000D1579 /* tripleface */ = {isa = PBXFileReference; lastKnownFileType = file; name = tripleface; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/tripleface"; sourceTree = "<group>"; };
+		69A49F90250790EA000D1579 /* slash */ = {isa = PBXFileReference; lastKnownFileType = file; name = slash; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/slash"; sourceTree = "<group>"; };
+		69A49F91250790EA000D1579 /* teddycigar */ = {isa = PBXFileReference; lastKnownFileType = file; name = teddycigar; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/teddycigar"; sourceTree = "<group>"; };
+		69A49F92250790EA000D1579 /* dalmatian */ = {isa = PBXFileReference; lastKnownFileType = file; name = dalmatian; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/dalmatian"; sourceTree = "<group>"; };
+		69A49F93250790EA000D1579 /* fire */ = {isa = PBXFileReference; lastKnownFileType = file; name = fire; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/fire"; sourceTree = "<group>"; };
+		69A49F94250790EA000D1579 /* tv80 */ = {isa = PBXFileReference; lastKnownFileType = file; name = tv80; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/tv80"; sourceTree = "<group>"; };
+		69A49F95250790EA000D1579 /* obama */ = {isa = PBXFileReference; lastKnownFileType = file; name = obama; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/obama"; sourceTree = "<group>"; };
+		69A49F96250790EA000D1579 /* heart */ = {isa = PBXFileReference; lastKnownFileType = file; name = heart; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/heart"; sourceTree = "<group>"; };
+		69A49F97250790EA000D1579 /* pug */ = {isa = PBXFileReference; lastKnownFileType = file; name = pug; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/pug"; sourceTree = "<group>"; };
+		69A49F98250790EA000D1579 /* flowers */ = {isa = PBXFileReference; lastKnownFileType = file; name = flowers; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/flowers"; sourceTree = "<group>"; };
+		69A49F99250790EA000D1579 /* sepia */ = {isa = PBXFileReference; lastKnownFileType = file; name = sepia; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/sepia"; sourceTree = "<group>"; };
+		69A49F9A250790EA000D1579 /* smallface */ = {isa = PBXFileReference; lastKnownFileType = file; name = smallface; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/smallface"; sourceTree = "<group>"; };
+		69A49F9B250790EA000D1579 /* bleachbypass */ = {isa = PBXFileReference; lastKnownFileType = file; name = bleachbypass; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/bleachbypass"; sourceTree = "<group>"; };
+		69A49F9C250790EA000D1579 /* sleepingmask */ = {isa = PBXFileReference; lastKnownFileType = file; name = sleepingmask; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/sleepingmask"; sourceTree = "<group>"; };
+		69A49F9D250790EA000D1579 /* koala */ = {isa = PBXFileReference; lastKnownFileType = file; name = koala; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/koala"; sourceTree = "<group>"; };
+		69A49F9E250790EA000D1579 /* blizzard */ = {isa = PBXFileReference; lastKnownFileType = file; name = blizzard; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/blizzard"; sourceTree = "<group>"; };
+		69A49F9F250790EA000D1579 /* realvhs */ = {isa = PBXFileReference; lastKnownFileType = file; name = realvhs; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/realvhs"; sourceTree = "<group>"; };
+		69A49FA0250790EA000D1579 /* drawingmanga */ = {isa = PBXFileReference; lastKnownFileType = file; name = drawingmanga; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/drawingmanga"; sourceTree = "<group>"; };
+		69A49FA1250790EA000D1579 /* filmcolorperfection */ = {isa = PBXFileReference; lastKnownFileType = file; name = filmcolorperfection; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/filmcolorperfection"; sourceTree = "<group>"; };
+		69A49FA2250790EA000D1579 /* lion */ = {isa = PBXFileReference; lastKnownFileType = file; name = lion; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/lion"; sourceTree = "<group>"; };
+		69A49FA3250790EA000D1579 /* twistedFace */ = {isa = PBXFileReference; lastKnownFileType = file; name = twistedFace; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/twistedFace"; sourceTree = "<group>"; };
+		69A49FA4250790EA000D1579 /* rain */ = {isa = PBXFileReference; lastKnownFileType = file; name = rain; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/rain"; sourceTree = "<group>"; };
+		69A49FA5250790EA000D1579 /* aviators */ = {isa = PBXFileReference; lastKnownFileType = file; name = aviators; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/aviators"; sourceTree = "<group>"; };
+		69A49FA6250790EA000D1579 /* grumpycat */ = {isa = PBXFileReference; lastKnownFileType = file; name = grumpycat; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/grumpycat"; sourceTree = "<group>"; };
+		69A49FA7250790EA000D1579 /* bigmouth */ = {isa = PBXFileReference; lastKnownFileType = file; name = bigmouth; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/bigmouth"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
@@ -55,15 +119,53 @@
 			buildActionMask = 2147483647;
 			files = (
 				747D40F5EAD50CA47D3ED24F /* Pods_Runner.framework in Frameworks */,
+				69A49F8625078E1A000D1579 /* DeepAR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		69A49F8A25079028000D1579 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				69A49FA5250790EA000D1579 /* aviators */,
+				69A49F8C250790EA000D1579 /* bcgSeg */,
+				69A49FA7250790EA000D1579 /* bigmouth */,
+				69A49F9B250790EA000D1579 /* bleachbypass */,
+				69A49F9E250790EA000D1579 /* blizzard */,
+				69A49F92250790EA000D1579 /* dalmatian */,
+				69A49FA0250790EA000D1579 /* drawingmanga */,
+				69A49F8D250790EA000D1579 /* fatify */,
+				69A49FA1250790EA000D1579 /* filmcolorperfection */,
+				69A49F93250790EA000D1579 /* fire */,
+				69A49F98250790EA000D1579 /* flowers */,
+				69A49FA6250790EA000D1579 /* grumpycat */,
+				69A49F96250790EA000D1579 /* heart */,
+				69A49F9D250790EA000D1579 /* koala */,
+				69A49FA2250790EA000D1579 /* lion */,
+				69A49F8E250790EA000D1579 /* look2 */,
+				69A49F8B250790EA000D1579 /* mudMask */,
+				69A49F95250790EA000D1579 /* obama */,
+				69A49F97250790EA000D1579 /* pug */,
+				69A49FA4250790EA000D1579 /* rain */,
+				69A49F9F250790EA000D1579 /* realvhs */,
+				69A49F99250790EA000D1579 /* sepia */,
+				69A49F90250790EA000D1579 /* slash */,
+				69A49F9C250790EA000D1579 /* sleepingmask */,
+				69A49F9A250790EA000D1579 /* smallface */,
+				69A49F91250790EA000D1579 /* teddycigar */,
+				69A49F8F250790EA000D1579 /* tripleface */,
+				69A49F94250790EA000D1579 /* tv80 */,
+				69A49FA3250790EA000D1579 /* twistedFace */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
+		};
 		7E35B74A4111A9C9D274B8EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				69A49F84250786D0000D1579 /* DeepAR.framework */,
 				D78157AB2D04BFCCE265C0A9 /* Pods_Runner.framework */,
 			);
 			name = Frameworks;
@@ -83,6 +185,7 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
+				69A49F8A25079028000D1579 /* Effects */,
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
@@ -110,6 +213,7 @@
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
+				69A49F81250783FB000D1579 /* ViewController.swift */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -121,7 +225,6 @@
 				E62ECAACE49B00159D7059F4 /* Pods-Runner.release.xcconfig */,
 				F56AF992E8B12A6F72AC1F05 /* Pods-Runner.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -188,6 +291,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69A49FA82507968F000D1579 /* aviators in Resources */,
+				69A49FA92507968F000D1579 /* bcgSeg in Resources */,
+				69A49FAA2507968F000D1579 /* bigmouth in Resources */,
+				69A49FAB2507968F000D1579 /* bleachbypass in Resources */,
+				69A49FAC25079690000D1579 /* blizzard in Resources */,
+				69A49FAD25079690000D1579 /* dalmatian in Resources */,
+				69A49FAE25079690000D1579 /* drawingmanga in Resources */,
+				69A49FAF25079690000D1579 /* fatify in Resources */,
+				69A49FB025079690000D1579 /* filmcolorperfection in Resources */,
+				69A49FB125079690000D1579 /* fire in Resources */,
+				69A49FB225079690000D1579 /* flowers in Resources */,
+				69A49FB325079690000D1579 /* grumpycat in Resources */,
+				69A49FB425079690000D1579 /* heart in Resources */,
+				69A49FB525079690000D1579 /* koala in Resources */,
+				69A49FB625079690000D1579 /* lion in Resources */,
+				69A49FB725079690000D1579 /* look2 in Resources */,
+				69A49FB825079690000D1579 /* mudMask in Resources */,
+				69A49FB925079690000D1579 /* obama in Resources */,
+				69A49FBA25079690000D1579 /* pug in Resources */,
+				69A49FBB25079690000D1579 /* rain in Resources */,
+				69A49FBC25079690000D1579 /* realvhs in Resources */,
+				69A49FBD25079690000D1579 /* sepia in Resources */,
+				69A49FBE25079690000D1579 /* slash in Resources */,
+				69A49FBF25079690000D1579 /* sleepingmask in Resources */,
+				69A49FC025079690000D1579 /* smallface in Resources */,
+				69A49FC125079690000D1579 /* teddycigar in Resources */,
+				69A49FC225079690000D1579 /* tripleface in Resources */,
+				69A49FC325079690000D1579 /* tv80 in Resources */,
+				69A49FC425079690000D1579 /* twistedFace in Resources */,
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
@@ -203,15 +335,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh",
-				"${PODS_ROOT}/../Flutter/Flutter.framework",
-				"${BUILT_PRODUCTS_DIR}/path_provider/path_provider.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Flutter.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/path_provider.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -275,6 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69A49F82250783FB000D1579 /* ViewController.swift in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 			);
@@ -359,18 +489,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = FUFK25RMK4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Runner/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.storytellers;
+				PRODUCT_BUNDLE_IDENTIFIER = com.storytellers.storytellers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -478,7 +614,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -491,18 +628,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = FUFK25RMK4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Runner/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.storytellers;
+				PRODUCT_BUNDLE_IDENTIFIER = com.storytellers.storytellers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -518,18 +661,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = FUFK25RMK4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Runner/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.storytellers;
+				PRODUCT_BUNDLE_IDENTIFIER = com.storytellers.storytellers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

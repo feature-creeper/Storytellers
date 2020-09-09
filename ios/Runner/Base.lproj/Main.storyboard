@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Flutter View Controller-->
@@ -14,13 +17,162 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="51" y="-3"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6Pe-MK-8Nv">
+            <objects>
+                <viewController storyboardIdentifier="Success" id="xjj-lV-dpb" customClass="ViewController" customModule="Runner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CNq-aL-Erb"/>
+                        <viewControllerLayoutGuide type="bottom" id="cn9-TK-MP0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="af1-dW-UJc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8d1-TN-bva">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RfU-cq-u6h">
+                                <rect key="frame" x="347" y="44" width="30" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                <state key="normal" title="✕">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="close:" destination="xjj-lV-dpb" eventType="touchUpInside" id="Du4-1D-EYM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vO-5u-RKg">
+                                <rect key="frame" x="20" y="52" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="mdd-p0-894"/>
+                                    <constraint firstAttribute="width" constant="50" id="tJh-eF-s5n"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" image="SwitchCamera"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hQ4-3l-bYN">
+                                <rect key="frame" x="55" y="797" width="304" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHj-BW-8lm">
+                                        <rect key="frame" x="0.0" y="0.0" width="96" height="30"/>
+                                        <state key="normal" title="Mask">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRT-jo-f2P">
+                                        <rect key="frame" x="104" y="0.0" width="96" height="30"/>
+                                        <state key="normal" title="Effect">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxJ-ul-1pb">
+                                        <rect key="frame" x="208" y="0.0" width="96" height="30"/>
+                                        <state key="normal" title="Filter">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xvd-zk-dOt">
+                                <rect key="frame" x="55" y="679" width="304" height="103"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SX-bw-xLl">
+                                        <rect key="frame" x="0.0" y="0.0" width="96" height="103"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <state key="normal" title="‹">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ugc-oW-0bv">
+                                        <rect key="frame" x="104" y="0.0" width="96" height="103"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="76"/>
+                                        <state key="normal" title="◉">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRT-zy-vri">
+                                        <rect key="frame" x="208" y="0.0" width="96" height="103"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <state key="normal" title="›">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DrC-Be-GCX">
+                                <rect key="frame" x="55" y="634" width="304" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyK-Lr-jmP">
+                                        <rect key="frame" x="0.0" y="0.0" width="96" height="30"/>
+                                        <state key="normal" title="Photo">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTQ-5F-veu">
+                                        <rect key="frame" x="104" y="0.0" width="96" height="30"/>
+                                        <state key="normal" title="Video">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPB-Ld-dmE">
+                                        <rect key="frame" x="208" y="0.0" width="96" height="30"/>
+                                        <state key="normal" title="LowQ Video">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96930998563766479" green="0.83546465534997016" blue="0.76828669621403523" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="8d1-TN-bva" firstAttribute="leading" secondItem="af1-dW-UJc" secondAttribute="leadingMargin" constant="-20" id="B0Q-rm-Op2"/>
+                            <constraint firstItem="8d1-TN-bva" firstAttribute="top" secondItem="af1-dW-UJc" secondAttribute="topMargin" constant="-44" id="JV0-CJ-EP5"/>
+                            <constraint firstItem="DrC-Be-GCX" firstAttribute="trailing" secondItem="xvd-zk-dOt" secondAttribute="trailing" id="Q9l-3b-geT"/>
+                            <constraint firstItem="xvd-zk-dOt" firstAttribute="top" secondItem="DrC-Be-GCX" secondAttribute="bottom" constant="15" id="RQF-Qd-HTJ"/>
+                            <constraint firstItem="hQ4-3l-bYN" firstAttribute="top" secondItem="xvd-zk-dOt" secondAttribute="bottom" constant="15" id="UE2-SB-CIu"/>
+                            <constraint firstItem="hQ4-3l-bYN" firstAttribute="leading" secondItem="af1-dW-UJc" secondAttribute="leadingMargin" constant="35" id="VoM-b8-ac5"/>
+                            <constraint firstItem="xvd-zk-dOt" firstAttribute="leading" secondItem="hQ4-3l-bYN" secondAttribute="leading" id="Zay-be-8Fu"/>
+                            <constraint firstItem="8d1-TN-bva" firstAttribute="centerY" secondItem="af1-dW-UJc" secondAttribute="centerY" id="bXm-vV-wV2"/>
+                            <constraint firstItem="8d1-TN-bva" firstAttribute="centerX" secondItem="af1-dW-UJc" secondAttribute="centerX" id="fjv-1L-Lgk"/>
+                            <constraint firstItem="cn9-TK-MP0" firstAttribute="top" secondItem="hQ4-3l-bYN" secondAttribute="bottom" constant="35" id="i5H-M8-0XL"/>
+                            <constraint firstItem="7vO-5u-RKg" firstAttribute="top" secondItem="CNq-aL-Erb" secondAttribute="bottom" constant="8" id="lPO-cn-HXG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hQ4-3l-bYN" secondAttribute="trailing" constant="35" id="pF6-Wb-2aJ"/>
+                            <constraint firstItem="DrC-Be-GCX" firstAttribute="leading" secondItem="xvd-zk-dOt" secondAttribute="leading" id="yg3-Xx-MHJ"/>
+                            <constraint firstItem="xvd-zk-dOt" firstAttribute="trailing" secondItem="hQ4-3l-bYN" secondAttribute="trailing" id="zPM-O5-pRA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="arViewContainer" destination="8d1-TN-bva" id="AXo-OL-7jB"/>
+                        <outlet property="effectsButton" destination="lRT-jo-f2P" id="YY2-Kc-M8c"/>
+                        <outlet property="filtersButton" destination="ZxJ-ul-1pb" id="O3B-uY-hCY"/>
+                        <outlet property="lowQVideoButton" destination="gPB-Ld-dmE" id="wEz-zK-rZH"/>
+                        <outlet property="masksButton" destination="zHj-BW-8lm" id="qW6-JD-JNB"/>
+                        <outlet property="nextButton" destination="oRT-zy-vri" id="4Pl-4D-mIm"/>
+                        <outlet property="photoButton" destination="yyK-Lr-jmP" id="j9c-Xc-egV"/>
+                        <outlet property="previousButton" destination="3SX-bw-xLl" id="Jlm-U6-bBs"/>
+                        <outlet property="recordActionButton" destination="Ugc-oW-0bv" id="YR4-BE-04H"/>
+                        <outlet property="switchCameraButton" destination="7vO-5u-RKg" id="ACX-F8-FXb"/>
+                        <outlet property="videoButton" destination="MTQ-5F-veu" id="P4k-Io-pf5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Olb-4v-fC1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="947.82608695652186" y="-11.383928571428571"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="SwitchCamera" width="31" height="26"/>
+    </resources>
 </document>
