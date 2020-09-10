@@ -127,6 +127,7 @@ class ViewController: UIViewController {
     
     
     var flutterResult:FlutterResult?
+    var maskPath:String?
     
     
     // MARK: - Lifecycle -
@@ -140,7 +141,11 @@ class ViewController: UIViewController {
         buttonModePairs = [(masksButton, .masks), (effectsButton, .effects), (filtersButton, .filters)]
         buttonRecordingModePairs = [ (photoButton, RecordingMode.photo), (videoButton, RecordingMode.video), (lowQVideoButton, RecordingMode.lowQualityVideo)]
         currentMode = .masks
-        currentRecordingMode = .photo    }
+        currentRecordingMode = .photo
+        
+        
+        deepAR.switchEffect(withSlot: "masks", path: maskPath)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -206,6 +211,7 @@ class ViewController: UIViewController {
     }
     
     private func switchMode(_ path: String?) {
+        
         deepAR.switchEffect(withSlot: currentMode.rawValue, path: path)
     }
     
@@ -344,6 +350,11 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func closeTapped(_ sender: Any) {
+        deepAR.shutdown()
+        dismiss(animated: true, completion: nil)
+    }
+    
     func close() {
         deepAR.shutdown()
         dismiss(animated: true, completion: nil)
@@ -416,6 +427,7 @@ extension ViewController: DeepARDelegate {
 
 extension String {
     var path: String? {
+        print(Bundle.main.path(forResource: self, ofType: nil))
         return Bundle.main.path(forResource: self, ofType: nil)
     }
 }

@@ -50,7 +50,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="close:" destination="xjj-lV-dpb" eventType="touchUpInside" id="Du4-1D-EYM"/>
+                                    <action selector="closeTapped:" destination="xjj-lV-dpb" eventType="touchUpInside" id="4I2-IL-dBK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vO-5u-RKg">

@@ -13,6 +13,15 @@ import Flutter
     let channel = FlutterMethodChannel(name: "com.storytellers.storytellers/nativecall",
     binaryMessenger: controller.binaryMessenger)
     
+    //Find asset from Flutter
+    let key = controller.lookupKey(forAsset: "assets/images/rd_cbucket1.jpg")
+    let imagePath = Bundle.main.path(forResource: key, ofType: nil)
+    print("MY IMAGE PATH: \(imagePath)")
+    
+    let effectKey = controller.lookupKey(forAsset: "assets/effects/teddycigar")
+    let effectPath = Bundle.main.path(forResource: effectKey, ofType: nil)
+    print("MY EFFECT PATH: \(effectPath)")
+    
     channel.setMethodCallHandler({
         (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
       // Note: this method is invoked on the UI thread.
@@ -22,9 +31,17 @@ import Flutter
             //let storyboardName = "Main"
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if #available(iOS 13.0, *) {
+                
+                
+                if let sentText = call.arguments as? [String:Any]{
+                    print(sentText["text"])
+                }
+                
+                
                 let vc = storyboard.instantiateViewController(identifier: "Success") as ViewController
                 vc.modalPresentationStyle = .fullScreen
                 vc.flutterResult = result
+                vc.maskPath = effectPath
                 controller.present(vc, animated: true, completion: nil)
             } else {
                 // Fallback on earlier versions
@@ -41,8 +58,6 @@ import Flutter
         else{
             result(FlutterMethodNotImplemented)
         }
-        
-        
     })
     
     

@@ -11,7 +11,8 @@ class RoleSelectViewModel with ChangeNotifier {
   launchDeepAR() async {
     String info;
     try {
-      info = await nativeCallChannel.invokeMethod("pushPop");
+      info = await nativeCallChannel
+          .invokeMethod("pushPop", {"text": "Some random text"});
       _updateDB(info);
     } on PlatformException {
       info = "Failed to push native view.";
