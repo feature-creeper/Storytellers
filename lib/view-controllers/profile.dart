@@ -1,14 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:storytellers/database/database-helper.dart';
 import 'package:storytellers/view-controllers/video_player.dart';
 
-class MyVideos extends StatefulWidget {
+class Profile extends StatefulWidget {
   @override
-  _MyVideosState createState() => _MyVideosState();
+  _ProfileState createState() => _ProfileState();
 }
 
-class _MyVideosState extends State<MyVideos> {
+class _ProfileState extends State<Profile> {
   final dbHelper = DatabaseHelper.instance;
 
   List<String> a = ["A", "B"];
@@ -34,13 +35,27 @@ class _MyVideosState extends State<MyVideos> {
     );
   }
 
+  _signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlue[50],
+        backgroundColor: Colors.white,
         elevation: 0,
+        actions: [
+          FlatButton(
+            onPressed: _signOut,
+            child: Icon(
+              Icons.exit_to_app,
+              size: 35,
+            ),
+          )
+        ],
       ),
+      backgroundColor: Colors.white,
       body: ListView.builder(
           itemCount: a.length,
           itemBuilder: (context, index) {

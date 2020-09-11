@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:storytellers/view-controllers/my_videos.dart';
-
-import '../main.dart';
+import 'package:storytellers/view-controllers/profile.dart';
+import 'home.dart';
 
 class NavigationBar extends StatefulWidget {
   @override
@@ -12,7 +11,7 @@ class _NavigationBarState extends State<NavigationBar> {
   int navIndex = 0;
 
   final _homePage = MyHomePage();
-  final _myVideos = MyVideos();
+  final _myVideos = Profile();
 
   void setPage(int index) {
     setState(() {

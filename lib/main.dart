@@ -1,19 +1,45 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:storytellers/view-controllers/book_details.dart';
-
-import 'view-controllers/featured.dart';
+import 'package:provider/provider.dart';
+import 'package:storytellers/view-controllers/signin.dart';
+import 'package:storytellers/view-model/signin_view-model.dart';
 import 'view-controllers/navigation_bar.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
-//solwayTextTheme
-//heeboTextTheme
-
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool signedIn = false;
+
+  @override
+  void initState() {
+    FirebaseAuth.instance.authStateChanges().listen((User user) {
+      if (user == null) {
+        print('User is currently signed out!');
+        setState(() {
+          signedIn = false;
+        });
+      } else {
+        print('User is signed in!');
+        setState(() {
+          signedIn = true;
+        });
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,32 +51,11 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: NavigationBar(),
+      home: signedIn
+          ? NavigationBar()
+          : ChangeNotifierProvider(
+              create: (_) => SigninViewModel(),
+              builder: (context, child) => Signin()), //NavigationBar(),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage();
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  void goToBookDetails() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => BookDetails()),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        padding: EdgeInsets.fromLTRB(0, 80, 0, 30),
-        itemCount: 8,
-        itemBuilder: (context, index) {
-          return Featured(goToBookDetails);
-        });
   }
 }
