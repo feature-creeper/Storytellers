@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:storytellers/model/book.dart';
+import 'package:storytellers/view-model/home_view-model.dart';
 import 'book_details.dart';
 import 'featured.dart';
+import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage();
@@ -8,8 +11,11 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
-    with AutomaticKeepAliveClientMixin {
+class _MyHomePageState extends State<MyHomePage> {
+  // Future<Void> _getBooks;
+
+  HomeViewModel provider;
+
   void goToBookDetails() {
     Navigator.push(
       context,
@@ -18,16 +24,70 @@ class _MyHomePageState extends State<MyHomePage>
   }
 
   @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        padding: EdgeInsets.fromLTRB(0, 80, 0, 30),
-        itemCount: 8,
-        itemBuilder: (context, index) {
-          return Featured(goToBookDetails);
-        });
+  void initState() {
+    provider = context.read<HomeViewModel>();
+    super.initState();
   }
 
+  // _getBooks() {
+  //   context.read<HomeViewModel>().getBooksF();
+  // }
+
   @override
-  // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
+  Widget build(BuildContext context) {
+    // return SafeArea(
+    //     child: FlatButton(onPressed: _getBooks, child: Text("data")));
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Storytellers"),
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
+      backgroundColor: Colors.white,
+      body: ListView(
+        children: [
+          Selector<HomeViewModel, List<String>>(
+              selector: (_, model) => model.featured,
+              builder: (_, bookIds, __) {
+                return Featured(goToBookDetails, "Featured", bookIds);
+              }),
+          Selector<HomeViewModel, List<String>>(
+              selector: (_, model) => model.recentlyAdded,
+              builder: (_, bookIds, __) {
+                return Featured(goToBookDetails, "Recently added", bookIds);
+              }),
+          // context.select((HomeViewModel model) => model.featured).isEmpty
+          //     ? _LoadingFeaturedList()
+          //     : Featured(goToBookDetails, "Featured"),
+          // context.select((HomeViewModel model) => model.recentlyAdded).isEmpty
+          //     ? _LoadingFeaturedList()
+          //     : Featured(goToBookDetails, "Recently added"),
+        ],
+      ),
+    );
+    // return ListView.builder(
+    //     padding: EdgeInsets.fromLTRB(0, 80, 0, 30),
+    //     itemCount: 8,
+    //     itemBuilder: (context, index) {
+    //       return Featured(goToBookDetails);
+    //     });
+  }
+
+  // @override
+  // // TODO: implement wantKeepAlive
+  // bool get wantKeepAlive => true;
+}
+
+class _LoadingFeaturedList extends StatelessWidget {
+  const _LoadingFeaturedList({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(child: CircularProgressIndicator()),
+      height: 100,
+    );
+  }
 }

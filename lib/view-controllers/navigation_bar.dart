@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:storytellers/view-controllers/profile.dart';
+import 'package:storytellers/view-model/home_view-model.dart';
 import 'home.dart';
 
 class NavigationBar extends StatefulWidget {
@@ -10,7 +12,8 @@ class NavigationBar extends StatefulWidget {
 class _NavigationBarState extends State<NavigationBar> {
   int navIndex = 0;
 
-  final _homePage = MyHomePage();
+  Widget _homePage;
+
   final _myVideos = Profile();
 
   void setPage(int index) {
@@ -30,6 +33,13 @@ class _NavigationBarState extends State<NavigationBar> {
       default:
         return Container();
     }
+  }
+
+  @override
+  void initState() {
+    _homePage = ChangeNotifierProvider(
+        create: (_) => HomeViewModel(), builder: (_, __) => MyHomePage());
+    super.initState();
   }
 
   @override
