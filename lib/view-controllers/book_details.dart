@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:storytellers/model/book.dart';
 import 'package:storytellers/view-controllers/role_select.dart';
+import 'package:storytellers/view-model/book_details_view-model.dart';
 import 'package:storytellers/view-model/role_select_view-model.dart';
 import 'package:stretchy_header/stretchy_header.dart';
 
@@ -10,8 +12,14 @@ class BookDetails extends StatefulWidget {
 }
 
 class _BookDetailsState extends State<BookDetails> {
+  BookDetailsViewModel vm;
+
   void goHome() {
     Navigator.pop(context);
+  }
+
+  void _addToMyBooks() {
+    vm.tappedAddToMyBooks();
   }
 
   void goToRoleSelect() {
@@ -23,6 +31,12 @@ class _BookDetailsState extends State<BookDetails> {
             builder: (context, child) => RoleSelect()),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    vm = context.read<BookDetailsViewModel>();
+    super.initState();
   }
 
   @override
@@ -65,7 +79,7 @@ class _BookDetailsState extends State<BookDetails> {
           ),
           itemCount: 1,
           itemBuilder: (context, index) {
-            return _BookMainDetails();
+            return _BookMainDetails(vm.book);
           },
         ),
         Align(
@@ -81,9 +95,9 @@ class _BookDetailsState extends State<BookDetails> {
               child: FlatButton(
                 highlightColor: Colors.transparent,
                 splashColor: Colors.transparent,
-                onPressed: goToRoleSelect,
+                onPressed: _addToMyBooks,
                 child: Text(
-                  "Let's read!",
+                  "Add to bookshelf",
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
                 color: Colors.blueAccent,
@@ -97,17 +111,19 @@ class _BookDetailsState extends State<BookDetails> {
 }
 
 class _BookMainDetails extends StatelessWidget {
+  final Book book;
+  _BookMainDetails(this.book);
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(14, 10, 14, 10),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         SizedBox(height: 10),
-        Text("Book title",
+        Text(book.title,
             style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold)),
         // SizedBox(height: 5),
         Text(
-          "Author",
+          book.author,
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.normal),
         ),
         SizedBox(height: 14),

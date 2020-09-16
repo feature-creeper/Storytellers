@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:storytellers/view-controllers/my_books.dart';
 import 'package:storytellers/view-controllers/profile.dart';
 import 'package:storytellers/view-model/home_view-model.dart';
 import 'home.dart';
@@ -31,7 +32,7 @@ class _NavigationBarState extends State<NavigationBar> {
         return _myVideos;
         break;
       default:
-        return Container();
+        return MyBooks();
     }
   }
 

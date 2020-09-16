@@ -5,7 +5,7 @@ import 'package:storytellers/view-model/home_view-model.dart';
 
 class Featured extends StatefulWidget {
   final List<String> bookIds;
-  final VoidCallback goToDetails;
+  final Function goToDetails;
   final String sectionTitle;
   const Featured(this.goToDetails, this.sectionTitle, this.bookIds);
 
@@ -63,7 +63,7 @@ class _FeaturedState extends State<Featured> {
 class _BookThumbnail extends StatelessWidget {
   const _BookThumbnail({@required this.goToDetails, this.book});
 
-  final goToDetails;
+  final Function goToDetails;
   final Book book;
   // final List<String> bookIds;
   // final int index;
@@ -71,7 +71,7 @@ class _BookThumbnail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: goToDetails,
+      onTap: () => goToDetails(book),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

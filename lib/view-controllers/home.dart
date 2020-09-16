@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:storytellers/model/book.dart';
+import 'package:storytellers/view-model/book_details_view-model.dart';
 import 'package:storytellers/view-model/home_view-model.dart';
 import 'book_details.dart';
 import 'featured.dart';
@@ -16,10 +17,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   HomeViewModel provider;
 
-  void goToBookDetails() {
+  void goToBookDetails(Book book) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => BookDetails()),
+      MaterialPageRoute(
+        builder: (context) => ChangeNotifierProvider(
+          create: (_) => BookDetailsViewModel(book),
+          builder: (_, __) => BookDetails(),
+        ),
+      ),
     );
   }
 
