@@ -1,8 +1,10 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:storytellers/database/database-helper.dart';
 import 'package:storytellers/model/book.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -10,10 +12,23 @@ class BookDetailsViewModel with ChangeNotifier {
   final Book book;
   BookDetailsViewModel(this.book);
 
+  final dbHelper = DatabaseHelper.instance;
+
   void tappedAddToMyBooks() {
     final StorageReference ref =
         FirebaseStorage().ref().child(book.effectStoragePath);
-    _downloadFile(ref);
+    //_downloadFile(ref);
+    _saveBookLocally();
+  }
+
+  void _saveBookLocally() async {
+    Map<String, dynamic> row = {
+      DatabaseHelper.columnBookDetails: jsonEncode(book.toJson())
+    };
+    // print(book.toJson());
+    final id = await dbHelper.insert(row);
+
+    print("ROWWW ID: $id");
   }
 
   Future<void> _downloadFile(StorageReference ref) async {

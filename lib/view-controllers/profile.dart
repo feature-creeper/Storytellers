@@ -28,6 +28,11 @@ class _ProfileState extends State<Profile> {
     super.initState();
   }
 
+  _queryAll() async {
+    final allRows = await dbHelper.queryAllRows();
+    print('query all rows: $allRows');
+  }
+
   _showVideo(String path) {
     Navigator.push(
       context,
@@ -46,6 +51,13 @@ class _ProfileState extends State<Profile> {
         backgroundColor: Colors.white,
         elevation: 0,
         actions: [
+          FlatButton(
+            onPressed: _queryAll,
+            child: Icon(
+              Icons.phone_iphone,
+              size: 35,
+            ),
+          ),
           FlatButton(
             onPressed: _signOut,
             child: Icon(

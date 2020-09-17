@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class Book {
   String title;
   String author;
@@ -14,4 +12,9 @@ class Book {
         effectStoragePath = json['effect'] {
     print("title of book $title");
   }
+
+  Map<String, dynamic> toJson() => {
+        'title': title,
+        'author': author,
+      };
 }

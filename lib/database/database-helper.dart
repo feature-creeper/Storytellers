@@ -11,8 +11,9 @@ class DatabaseHelper {
   static final table = 'my_table';
 
   static final columnId = '_id';
-  static final columnName = 'name';
-  static final columnAge = 'age';
+  static final columnBookDetails = 'details';
+  // static final columnAge = 'author';
+  // static final columnAge = 'author';
 
   // make this a singleton class
   DatabaseHelper._privateConstructor();
@@ -40,8 +41,7 @@ class DatabaseHelper {
     await db.execute('''
           CREATE TABLE $table (
             $columnId INTEGER PRIMARY KEY,
-            $columnName TEXT NOT NULL,
-            $columnAge INTEGER NOT NULL
+            $columnBookDetails TEXT NOT NULL
           )
           ''');
   }
