@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:storytellers/view-controllers/my_books_detail.dart';
+import 'package:provider/provider.dart';
+import 'package:storytellers/view-controllers/bookshelf_detail.dart';
+import 'package:storytellers/view-model/bookshelf_details_view-model.dart';
 
 class MyBooks extends StatefulWidget {
   @override
@@ -8,9 +10,13 @@ class MyBooks extends StatefulWidget {
 
 class _MyBooksState extends State<MyBooks> {
   _goToBookDetail() {
+    Widget provider = ChangeNotifierProvider(
+      create: (_) => BookshelfDetailsViewModel(),
+      builder: (_, __) => BookShelfDetail(),
+    );
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (_) => MyBooksDetail()),
+      MaterialPageRoute(builder: (_) => provider),
     );
   }
 

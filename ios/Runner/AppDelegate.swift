@@ -3,6 +3,14 @@ import Flutter
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
+    
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
   override func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -14,13 +22,30 @@ import Flutter
     binaryMessenger: controller.binaryMessenger)
     
     //Find asset from Flutter
-    let key = controller.lookupKey(forAsset: "assets/images/rd_cbucket1.jpg")
-    let imagePath = Bundle.main.path(forResource: key, ofType: nil)
-    print("MY IMAGE PATH: \(imagePath)")
-    
+//    let key = controller.lookupKey(forAsset: "assets/images/rd_cbucket1.jpg")
+//    let imagePath = Bundle.main.path(forResource: key, ofType: nil)
+//    print("MY IMAGE PATH: \(imagePath)")
+//
     let effectKey = controller.lookupKey(forAsset: "assets/effects/teddycigar")
     let effectPath = Bundle.main.path(forResource: effectKey, ofType: nil)
     print("MY EFFECT PATH: \(effectPath)")
+
+    
+    let fileManager = FileManager.default
+    let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    let myEffectPath = documentsURL.appendingPathComponent("myEffect").path
+    print("DOCS URL \(myEffectPath)")
+//    do {
+//        let fileURLs = try fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
+//        // process files
+//        for item in fileURLs {
+//            print("PATHTHTH = \(item.path)")
+//        }
+//
+//    } catch {
+//        print("Error while enumerating files \(documentsURL.path): \(error.localizedDescription)")
+//    }
+    
     
     channel.setMethodCallHandler({
         (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
@@ -41,7 +66,7 @@ import Flutter
                 let vc = storyboard.instantiateViewController(identifier: "Success") as ViewController
                 vc.modalPresentationStyle = .fullScreen
                 vc.flutterResult = result
-                vc.maskPath = effectPath
+                vc.maskPath = myEffectPath//effectPath
                 controller.present(vc, animated: true, completion: nil)
             } else {
                 // Fallback on earlier versions
@@ -76,3 +101,11 @@ import Flutter
       }
     }
 }
+
+//extension FileManager {
+//    func urls(for directory: FileManager.SearchPathDirectory, skipsHiddenFiles: Bool = true ) -> [URL]? {
+//        let documentsURL = urls(for: directory, in: .userDomainMask)[0]
+//        let fileURLs = try? contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil, options: skipsHiddenFiles ? .skipsHiddenFiles : [] )
+//        return fileURLs
+//    }
+//}
