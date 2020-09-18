@@ -17,29 +17,41 @@ class BookDetailsViewModel with ChangeNotifier {
   void tappedAddToMyBooks() {
     final StorageReference ref =
         FirebaseStorage().ref().child(book.effectStoragePath);
-    //_downloadFile(ref);
-    _saveBookLocally();
+    _downloadFile(ref);
   }
 
-  void _saveBookLocally() async {
+  void _saveBookLocally(String effectPath) async {
     Map<String, dynamic> row = {
-      DatabaseHelper.columnBookDetails: jsonEncode(book.toJson())
+      DatabaseHelper.columnBookDetails: jsonEncode(book),
+      DatabaseHelper.columnEffectPath: effectPath
     };
-    // print(book.toJson());
     final id = await dbHelper.insert(row);
+    print("ROW ADDED ID: $id");
+  }
 
-    print("ROWWW ID: $id");
+  _errorDownloading() {
+    //Do something
+  }
+
+  _success(String effectPath) {
+    _saveBookLocally(effectPath);
   }
 
   Future<void> _downloadFile(StorageReference ref) async {
     Directory dir = await getApplicationDocumentsDirectory();
-    String path = dir.path + '/myEffect';
+
+    String name = await ref.getName();
+    String path = dir.path + '/' + name;
 
     final StorageFileDownloadTask task = ref.writeToFile(File(path));
 
-    task.future.asStream().listen((event) {
-      print('TOTAL BYTES ${event.totalByteCount}');
-    }, onDone: () => print('DONE'));
+    task.future.asStream().listen(
+      (event) {
+        print('TOTAL BYTES ${event.totalByteCount}');
+      },
+      // onDone: () => ,
+      // onError: () => _errorDownloading(),
+    ).onDone(_success(name));
   }
 }
 

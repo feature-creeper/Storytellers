@@ -12,6 +12,7 @@ class DatabaseHelper {
 
   static final columnId = '_id';
   static final columnBookDetails = 'details';
+  static final columnEffectPath = 'effect_path';
   // static final columnAge = 'author';
   // static final columnAge = 'author';
 
@@ -41,7 +42,8 @@ class DatabaseHelper {
     await db.execute('''
           CREATE TABLE $table (
             $columnId INTEGER PRIMARY KEY,
-            $columnBookDetails TEXT NOT NULL
+            $columnBookDetails TEXT NOT NULL,
+            $columnEffectPath TEXT NOT NULL
           )
           ''');
   }

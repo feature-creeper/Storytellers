@@ -9,7 +9,7 @@ class Book {
   Book.fromJson(Map<String, dynamic> json)
       : title = json['title'],
         author = json['author'],
-        effectStoragePath = json['effect'] {
+        effectStoragePath = json['effect'] ?? "" {
     print("title of book $title");
   }
 

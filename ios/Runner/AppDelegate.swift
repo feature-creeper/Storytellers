@@ -33,8 +33,7 @@ import Flutter
     
     let fileManager = FileManager.default
     let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    let myEffectPath = documentsURL.appendingPathComponent("myEffect").path
-    print("DOCS URL \(myEffectPath)")
+
 //    do {
 //        let fileURLs = try fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
 //        // process files
@@ -58,9 +57,11 @@ import Flutter
             if #available(iOS 13.0, *) {
                 
                 
-                if let sentText = call.arguments as? [String:Any]{
-                    print(sentText["text"])
-                }
+                guard let sentText = call.arguments as? [String:Any] else{return}
+                let effectName = sentText["text"] as! String
+                
+                    let myEffectPath = documentsURL.appendingPathComponent(effectName).path
+    print("DOCS URL \(myEffectPath)")
                 
                 
                 let vc = storyboard.instantiateViewController(identifier: "Success") as ViewController

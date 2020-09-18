@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:storytellers/model/book.dart';
 import 'package:storytellers/view-model/bookshelf_details_view-model.dart';
 
 class BookShelfDetail extends StatefulWidget {
@@ -11,8 +12,12 @@ class BookShelfDetail extends StatefulWidget {
 }
 
 class _BookShelfDetailState extends State<BookShelfDetail> {
+  Book book;
+
   _launchLive() {
-    context.read<BookshelfDetailsViewModel>().launchDeepAR();
+    context
+        .read<BookshelfDetailsViewModel>()
+        .launchDeepAR(book.effectStoragePath);
   }
 
   _checkEffect() async {
@@ -27,7 +32,14 @@ class _BookShelfDetailState extends State<BookShelfDetail> {
   }
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    book =
+        context.select<BookshelfDetailsViewModel, Book>((value) => value.book);
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -36,6 +48,7 @@ class _BookShelfDetailState extends State<BookShelfDetail> {
               onPressed: _checkEffect, child: Text("CHECK EFFECT Location")),
           SizedBox(height: 50),
           FlatButton(onPressed: _launchLive, child: Text("Launch LIVE")),
+          Text('EFFECT PATH: ${book.effectStoragePath}')
         ]),
       ),
     );

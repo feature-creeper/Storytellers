@@ -14,11 +14,16 @@ class BookshelfDetailsViewModel with ChangeNotifier {
 
   final dbHelper = DatabaseHelper.instance;
 
-  launchDeepAR() async {
+  final Book book;
+
+  BookshelfDetailsViewModel(this.book);
+
+  launchDeepAR(String effect) async {
+    // print(effect);
+
     String info;
     try {
-      info = await nativeCallChannel
-          .invokeMethod("pushPop", {"text": "Some random text"});
+      info = await nativeCallChannel.invokeMethod("pushPop", {"text": effect});
       //_updateDB(info);
     } on PlatformException {
       info = "Failed to push native view.";
