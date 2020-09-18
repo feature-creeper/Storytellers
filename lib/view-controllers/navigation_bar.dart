@@ -25,19 +25,6 @@ class _NavigationBarState extends State<NavigationBar> {
     });
   }
 
-  Widget _page() {
-    switch (navIndex) {
-      case 0:
-        return _homePage;
-        break;
-      case 2:
-        return _myVideos;
-        break;
-      default:
-        return _myBooks;
-    }
-  }
-
   @override
   void initState() {
     _homePage = ChangeNotifierProvider(
@@ -63,7 +50,10 @@ class _NavigationBarState extends State<NavigationBar> {
         fixedColor: Colors.deepPurple,
         onTap: setPage,
       ),
-      body: _page(),
+      body: IndexedStack(
+        children: [_homePage, _myBooks, _myVideos],
+        index: navIndex,
+      ),
     );
   }
 }

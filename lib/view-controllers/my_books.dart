@@ -30,15 +30,65 @@ class _MyBooksState extends State<MyBooks> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView.builder(
-          itemCount: myBooks.length,
+          itemCount: myBooks.length + 1,
           itemBuilder: (_, index) {
-            return ListTile(
-              onTap: () => _goToBookDetail(index),
-              leading: Icon(Icons.account_circle),
-              title: Text(myBooks[index].title),
-              subtitle: Text(myBooks[index].author),
-            );
+            if (index == 0) {
+              return Container(
+                padding: EdgeInsets.all(25),
+                child: Text("My Books",
+                    style:
+                        TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+              );
+            } else {
+              return _MyBookTile(() => _goToBookDetail(index - 1),
+                  book: myBooks[index - 1]);
+            }
           }),
     );
+  }
+}
+
+class _MyBookTile extends StatelessWidget {
+  const _MyBookTile(
+    this._goToBookDetail, {
+    @required this.book,
+  });
+  final Function _goToBookDetail;
+  final Book book;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => _goToBookDetail(),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.blueAccent,
+            ),
+            margin: EdgeInsets.all(15),
+            width: 70,
+            height: 85,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 15),
+              Text(book.title,
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
+              Text(book.author, style: TextStyle(fontSize: 18))
+            ],
+          ),
+        ],
+      ),
+    );
+    // return ListTile(
+    //   onTap: () => _goToBookDetail(),
+    //   leading: Icon(Icons.account_circle),
+    //   title: Text(book.title),
+    //   subtitle: Text(book.author),
+    // );
   }
 }
