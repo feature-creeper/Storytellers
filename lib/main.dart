@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:storytellers/view-controllers/signin.dart';
+import 'package:storytellers/view-model/saved_books_provider.dart';
 import 'package:storytellers/view-model/signin_view-model.dart';
 import 'view-controllers/navigation_bar.dart';
 
@@ -52,10 +53,11 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       home: signedIn
-          ? NavigationBar()
+          ? ChangeNotifierProvider(
+              create: (_) => SavedBooksProvider(), child: NavigationBar())
           : ChangeNotifierProvider(
               create: (_) => SigninViewModel(),
-              builder: (context, child) => Signin()), //NavigationBar(),
+              builder: (context, child) => Signin()),
     );
   }
 }

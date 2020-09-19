@@ -3,14 +3,49 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:storytellers/database/database-helper.dart';
 import 'package:storytellers/model/book.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:progress_dialog/progress_dialog.dart';
+import 'package:provider/provider.dart';
+import 'package:storytellers/view-model/saved_books_provider.dart';
 
 class BookDetailsViewModel with ChangeNotifier {
   final Book book;
-  BookDetailsViewModel(this.book);
+  final BuildContext context;
+
+  BookDetailsViewModel(this.book, this.context) {
+    pr = ProgressDialog(
+      context,
+      type: ProgressDialogType.Normal,
+
+      textDirection: TextDirection.rtl,
+      isDismissible: false,
+//      customBody: LinearProgressIndicator(
+//        valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+//        backgroundColor: Colors.white,
+//      ),
+    );
+
+    pr.style(
+//      message: 'Downloading file...',
+      message: 'Downloading',
+      borderRadius: 10.0,
+      backgroundColor: Colors.white,
+      elevation: 10.0,
+      insetAnimCurve: Curves.easeInOut,
+      progress: 0.0,
+      progressWidgetAlignment: Alignment.center,
+      maxProgress: 100.0,
+      progressTextStyle: TextStyle(
+          color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
+      messageTextStyle: TextStyle(
+          color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600),
+    );
+  }
+
+  ProgressDialog pr;
 
   final dbHelper = DatabaseHelper.instance;
 
@@ -27,6 +62,8 @@ class BookDetailsViewModel with ChangeNotifier {
     };
     final id = await dbHelper.insert(row);
     print("ROW ADDED ID: $id");
+
+    context.read<SavedBooksProvider>().getMyBooks();
   }
 
   _errorDownloading() {
@@ -45,6 +82,8 @@ class BookDetailsViewModel with ChangeNotifier {
 
     final StorageFileDownloadTask task = ref.writeToFile(File(path));
 
+    pr.show();
+
 //TODO: SORT OUT ERROR HANDLING
 //https://www.woolha.com/tutorials/flutter-using-streamcontroller-and-streamsubscription
     task.future.asStream().listen(
@@ -53,6 +92,7 @@ class BookDetailsViewModel with ChangeNotifier {
       },
       onDone: () {
         _success(name);
+        pr.hide();
       },
       onError: (error) {},
     ); //.onDone(_success(name));

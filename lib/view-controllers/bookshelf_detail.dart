@@ -41,15 +41,57 @@ class _BookShelfDetailState extends State<BookShelfDetail> {
     book =
         context.select<BookshelfDetailsViewModel, Book>((value) => value.book);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent, elevation: 0,
+        // bottomOpacity: 0,
+        // toolbarOpacity: 0,
+      ),
       body: SafeArea(
-        child: Column(children: [
-          FlatButton(
-              onPressed: _checkEffect, child: Text("CHECK EFFECT Location")),
-          SizedBox(height: 50),
-          FlatButton(onPressed: _launchLive, child: Text("Launch LIVE")),
-          Text('EFFECT PATH: ${book.effectStoragePath}')
-        ]),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              children: [
+                Spacer(),
+                Container(
+                  //constraints: BoxConstraints.,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.grey[300],
+                  ),
+                  width: 120,
+                  height: 150,
+                ),
+                Spacer(),
+              ],
+            ),
+            SizedBox(height: 15),
+            Text(book.title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+            Text(book.author,
+                textAlign: TextAlign.center, style: TextStyle(fontSize: 20)),
+            // FlatButton(
+            //     onPressed: _checkEffect, child: Text("CHECK EFFECT Location")),
+
+            Padding(
+              padding: const EdgeInsets.fromLTRB(35, 27, 35, 35),
+              child: FlatButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                padding: EdgeInsets.all(15),
+                onPressed: _launchLive,
+                child: Text(
+                  "Let's read!",
+                  style: TextStyle(color: Colors.white, fontSize: 23),
+                ),
+                color: Colors.blueAccent,
+              ),
+            ),
+            Text("Videos",
+                textAlign: TextAlign.center, style: TextStyle(fontSize: 20)),
+          ],
+        ),
       ),
     );
   }

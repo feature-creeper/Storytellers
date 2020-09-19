@@ -1,13 +1,15 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:storytellers/database/database-helper.dart';
 import 'package:storytellers/model/book.dart';
 
-class MyBooksViewModel with ChangeNotifier {
-  /*
-  int test = 5;
+class SavedBooksProvider with ChangeNotifier {
   final dbHelper = DatabaseHelper.instance;
+
+  SavedBooksProvider() {
+    getMyBooks();
+  }
 
   List<Book> _myBooks = [];
 
@@ -20,11 +22,7 @@ class MyBooksViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  MyBooksViewModel() {
-    _getMyBooks();
-  }
-
-  _getMyBooks() async {
+  getMyBooks() async {
     final allRows = await dbHelper.queryAllRows();
     print('query all rows:');
     List<Book> newBooks = [];
@@ -39,5 +37,5 @@ class MyBooksViewModel with ChangeNotifier {
       ,
     );
     myBooks = newBooks;
-  }*/
+  }
 }

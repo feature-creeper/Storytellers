@@ -4,6 +4,7 @@ import 'package:storytellers/model/book.dart';
 import 'package:storytellers/view-controllers/bookshelf_detail.dart';
 import 'package:storytellers/view-model/bookshelf_details_view-model.dart';
 import 'package:storytellers/view-model/my_books_view-model.dart';
+import 'package:storytellers/view-model/saved_books_provider.dart';
 
 class MyBooks extends StatefulWidget {
   @override
@@ -26,7 +27,7 @@ class _MyBooksState extends State<MyBooks> {
 
   @override
   Widget build(BuildContext context) {
-    myBooks = context.watch<MyBooksViewModel>().myBooks;
+    myBooks = context.watch<SavedBooksProvider>().myBooks;
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView.builder(
@@ -66,7 +67,7 @@ class _MyBookTile extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.blueAccent,
+              color: Colors.grey[300],
             ),
             margin: EdgeInsets.all(15),
             width: 70,
@@ -77,7 +78,7 @@ class _MyBookTile extends StatelessWidget {
             children: [
               SizedBox(height: 15),
               Text(book.title,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
               Text(book.author, style: TextStyle(fontSize: 18))
             ],
           ),

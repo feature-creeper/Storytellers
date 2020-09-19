@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:storytellers/model/book.dart';
 import 'package:storytellers/view-model/book_details_view-model.dart';
 import 'package:storytellers/view-model/home_view-model.dart';
+import 'package:storytellers/view-model/saved_books_provider.dart';
 import 'book_details.dart';
 import 'featured.dart';
 import 'package:provider/provider.dart';
@@ -21,11 +22,23 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ChangeNotifierProvider(
-          create: (_) => BookDetailsViewModel(book),
-          builder: (_, __) => BookDetails(),
-        ),
-      ),
+          builder: (_) => ChangeNotifierProvider<BookDetailsViewModel>(
+              create: (_) => BookDetailsViewModel(book, context),
+              builder: (_, __) => BookDetails())
+
+          // (context) => ChangeNotifierProxyProvider<SavedBooksProvider,
+          //         BookDetailsViewModel>(
+          //       //create: (context) => BookDetailsViewModel(book),
+          //       update: (context, value,
+          //           bookDetails) => BookDetailsViewModel(book, context),
+          //       child: BookDetails(),
+          //     )
+
+          // ChangeNotifierProvider(
+          //   create: (_) => BookDetailsViewModel(book),
+          //   child: BookDetails(),
+          // ),
+          ),
     );
   }
 

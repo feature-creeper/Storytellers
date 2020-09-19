@@ -27,7 +27,7 @@ class _NavigationBarState extends State<NavigationBar> {
 
   @override
   void initState() {
-    _homePage = ChangeNotifierProvider(
+    _homePage = ChangeNotifierProvider<HomeViewModel>(
         create: (_) => HomeViewModel(), builder: (_, __) => MyHomePage());
     _myBooks = ChangeNotifierProvider<MyBooksViewModel>(
         create: (_) => MyBooksViewModel(),
