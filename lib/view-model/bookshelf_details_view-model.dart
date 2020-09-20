@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -24,24 +25,34 @@ class BookshelfDetailsViewModel with ChangeNotifier {
     String info;
     try {
       info = await nativeCallChannel.invokeMethod("pushPop", {"text": effect});
-      //_updateDB(info);
+      _updateDB(info);
     } on PlatformException {
       info = "Failed to push native view.";
     }
   }
 
-  // void _updateDB(String path) async {
-  //   // row to update
-  //   Map<String, dynamic> row = {
-  //     DatabaseHelper.columnId: 1,
-  //     DatabaseHelper.columnName: path,
-  //     DatabaseHelper.columnAge: 32
-  //   };
-  //   final rowsAffected = await dbHelper.update(row);
-  //   if (rowsAffected == 0) {
-  //     final id = await dbHelper.insert(row);
-  //     print('inserted row id: $id');
-  //   }
-  //   print('updated $rowsAffected row(s)');
-  // }
+  void _updateDB(String path) async {
+//Change to json stringify, save timestamp as Key
+
+    String now = DateTime.now().toIso8601String();
+    book.videoPaths[now] = path;
+    String _videoPaths = jsonEncode(book.videoPaths);
+
+    // book.videoPaths.add(path);
+    // String _videoPaths = book.stringifyVideoPaths();
+    // print(_videoPaths);
+
+    //List<String> videoPaths = book.videoPaths;
+    // row to update
+    Map<String, dynamic> row = {
+      DatabaseHelper.columnId: book.dbRowId,
+      DatabaseHelper.columnVideoPaths: _videoPaths
+    };
+    final rowsAffected = await dbHelper.update(row);
+    // if (rowsAffected == 0) {
+    //   final id = await dbHelper.insert(row);
+    //   print('inserted row id: $id');
+    // }
+    print('updated $rowsAffected row(s)');
+  }
 }

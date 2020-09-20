@@ -13,6 +13,7 @@ class DatabaseHelper {
   static final columnId = '_id';
   static final columnBookDetails = 'details';
   static final columnEffectPath = 'effect_path';
+  static final columnVideoPaths = 'videos_paths';
   // static final columnAge = 'author';
   // static final columnAge = 'author';
 
@@ -43,7 +44,8 @@ class DatabaseHelper {
           CREATE TABLE $table (
             $columnId INTEGER PRIMARY KEY,
             $columnBookDetails TEXT NOT NULL,
-            $columnEffectPath TEXT NOT NULL
+            $columnEffectPath TEXT NOT NULL,
+            $columnVideoPaths TEXT NOT NULL
           )
           ''');
   }

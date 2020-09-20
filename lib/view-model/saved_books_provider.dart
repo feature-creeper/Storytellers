@@ -24,15 +24,16 @@ class SavedBooksProvider with ChangeNotifier {
 
   getMyBooks() async {
     final allRows = await dbHelper.queryAllRows();
-    print('query all rows:');
+
     List<Book> newBooks = [];
     allRows.forEach(
       (row) {
-        newBooks.add(
-          Book.fromJson(jsonDecode(row['details']))
-            ..effectStoragePath = row['effect_path'],
-        );
-      }
+        print('row:$row');
+        newBooks.add(Book.fromJson(jsonDecode(row['details']))
+          ..effectStoragePath = row['effect_path']
+          ..dbRowId = row['_id']
+          ..videoPaths = jsonDecode(row['videos_paths']));
+      } //videos_paths
       // print(row['details'])
       ,
     );

@@ -58,7 +58,8 @@ class BookDetailsViewModel with ChangeNotifier {
   void _saveBookLocally(String effectPath) async {
     Map<String, dynamic> row = {
       DatabaseHelper.columnBookDetails: jsonEncode(book),
-      DatabaseHelper.columnEffectPath: effectPath
+      DatabaseHelper.columnEffectPath: effectPath,
+      DatabaseHelper.columnVideoPaths: jsonEncode({})
     };
     final id = await dbHelper.insert(row);
     print("ROW ADDED ID: $id");
