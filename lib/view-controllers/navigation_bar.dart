@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:storytellers/model/book.dart';
 import 'package:storytellers/view-controllers/my_books.dart';
 import 'package:storytellers/view-controllers/profile.dart';
 import 'package:storytellers/view-model/home_view-model.dart';
 import 'package:storytellers/view-model/my_books_view-model.dart';
+import 'package:storytellers/view-model/profile_view-model.dart';
+import 'package:storytellers/view-model/saved_books_provider.dart';
 import 'home.dart';
 
 class NavigationBar extends StatefulWidget {
@@ -16,8 +19,7 @@ class _NavigationBarState extends State<NavigationBar> {
 
   Widget _homePage;
   ChangeNotifierProvider<MyBooksViewModel> _myBooks;
-
-  final _myVideos = Profile();
+  Widget _myVideos;
 
   void setPage(int index) {
     setState(() {
@@ -32,6 +34,14 @@ class _NavigationBarState extends State<NavigationBar> {
     _myBooks = ChangeNotifierProvider<MyBooksViewModel>(
         create: (_) => MyBooksViewModel(),
         builder: (context, child) => MyBooks());
+    _myVideos =
+        ChangeNotifierProxyProvider<SavedBooksProvider, ProfileViewModel>(
+            create: (context) => ProfileViewModel(),
+            update: (context, value, vm) => ProfileViewModel()..queryAll(),
+            builder: (context, child) => Profile());
+
+    // ChangeNotifierProvider<ProfileViewModel>(
+    //     create: (_) => ProfileViewModel(), builder: (_, __) => Profile());
     super.initState();
   }
 

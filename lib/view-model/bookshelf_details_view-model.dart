@@ -7,9 +7,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:storytellers/database/database-helper.dart';
 import 'package:storytellers/model/book.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:storytellers/view-model/saved_books_provider.dart';
 
 class BookshelfDetailsViewModel with ChangeNotifier {
+  BuildContext context;
   static const MethodChannel nativeCallChannel =
       const MethodChannel('com.storytellers.storytellers/nativecall');
 
@@ -17,7 +19,7 @@ class BookshelfDetailsViewModel with ChangeNotifier {
 
   final Book book;
 
-  BookshelfDetailsViewModel(this.book);
+  BookshelfDetailsViewModel(this.book, this.context);
 
   launchDeepAR(String effect) async {
     // print(effect);
@@ -34,7 +36,7 @@ class BookshelfDetailsViewModel with ChangeNotifier {
   void _updateDB(String path) async {
 //Change to json stringify, save timestamp as Key
 
-    String now = DateTime.now().toIso8601String();
+    String now = DateTime.now().millisecondsSinceEpoch.toString();
     book.videoPaths[now] = path;
     String _videoPaths = jsonEncode(book.videoPaths);
 
@@ -54,5 +56,7 @@ class BookshelfDetailsViewModel with ChangeNotifier {
     //   print('inserted row id: $id');
     // }
     print('updated $rowsAffected row(s)');
+
+    context.read<SavedBooksProvider>().savedNewVideo();
   }
 }

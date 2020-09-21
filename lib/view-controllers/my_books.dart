@@ -16,7 +16,7 @@ class _MyBooksState extends State<MyBooks> {
 
   _goToBookDetail(int index) {
     Widget provider = ChangeNotifierProvider(
-      create: (_) => BookshelfDetailsViewModel(myBooks[index]),
+      create: (_) => BookshelfDetailsViewModel(myBooks[index], context),
       builder: (_, __) => BookShelfDetail(),
     );
     Navigator.push(

@@ -22,21 +22,21 @@ class SavedBooksProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  savedNewVideo() {
+    notifyListeners();
+  }
+
   getMyBooks() async {
     final allRows = await dbHelper.queryAllRows();
 
     List<Book> newBooks = [];
-    allRows.forEach(
-      (row) {
-        print('row:$row');
-        newBooks.add(Book.fromJson(jsonDecode(row['details']))
-          ..effectStoragePath = row['effect_path']
-          ..dbRowId = row['_id']
-          ..videoPaths = jsonDecode(row['videos_paths']));
-      } //videos_paths
-      // print(row['details'])
-      ,
-    );
+    allRows.forEach((row) {
+      print('row:$row');
+      newBooks.add(Book.fromJson(jsonDecode(row['details']))
+        ..effectStoragePath = row['effect_path']
+        ..dbRowId = row['_id']
+        ..videoPaths = jsonDecode(row['videos_paths']));
+    });
     myBooks = newBooks;
   }
 }
