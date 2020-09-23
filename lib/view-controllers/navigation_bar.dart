@@ -39,9 +39,6 @@ class _NavigationBarState extends State<NavigationBar> {
             create: (context) => ProfileViewModel(),
             update: (context, value, vm) => ProfileViewModel()..queryAll(),
             builder: (context, child) => Profile());
-
-    // ChangeNotifierProvider<ProfileViewModel>(
-    //     create: (_) => ProfileViewModel(), builder: (_, __) => Profile());
     super.initState();
   }
 

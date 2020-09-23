@@ -1,3 +1,4 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:storytellers/model/book.dart';
 import 'package:provider/provider.dart';
@@ -60,43 +61,74 @@ class _FeaturedState extends State<Featured> {
   }
 }
 
-class _BookThumbnail extends StatelessWidget {
+class _BookThumbnail extends StatefulWidget {
   const _BookThumbnail({@required this.goToDetails, this.book});
 
   final Function goToDetails;
   final Book book;
-  // final List<String> bookIds;
-  // final int index;
+
+  @override
+  __BookThumbnailState createState() => __BookThumbnailState();
+}
+
+class __BookThumbnailState extends State<_BookThumbnail> {
+  String bookUrl;
+
+  image() async {
+    final StorageReference ref =
+        FirebaseStorage().ref().child(widget.book.imagePath);
+    String path = await ref.getDownloadURL();
+    setState(() {
+      bookUrl = path;
+    });
+  }
+
+  @override
+  void initState() {
+    image();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => goToDetails(book),
+      onTap: () => widget.goToDetails(widget.book),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            clipBehavior: Clip.hardEdge,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
-            height: 105,
-            width: 90,
-            child: Image.asset(
-              "assets/images/rd_cbucket1.jpg",
-              fit: BoxFit.cover,
-              alignment: Alignment.topCenter,
-            ),
-          ),
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              height: 105,
+              width: 90,
+              child: bookUrl == null
+                  ? Container()
+                  : Image.network(bookUrl, fit: BoxFit.cover,
+                      loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      } else {
+                        // return Center(
+                        //     child: CircularProgressIndicator(
+                        //   backgroundColor: Colors.grey[300],
+                        //   valueColor:
+                        //       AlwaysStoppedAnimation<Color>(Colors.white),
+                        //   value: loadingProgress.expectedTotalBytes != null
+                        //       ? loadingProgress.cumulativeBytesLoaded /
+                        //           loadingProgress.expectedTotalBytes
+                        //       : null,
+                        // ),
+
+                      }
+                    })),
           SizedBox(height: 5),
           Text(
-            book.title,
+            widget.book.title,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          Text(
-            "Author",
-            // style: TextStyle(fontWeight: FontWeight.bold),
-          )
+          Text("Author")
         ],
       ),
     );

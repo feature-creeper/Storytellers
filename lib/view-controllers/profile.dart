@@ -87,8 +87,11 @@ class _ProfileState extends State<Profile> {
           Padding(
             padding: const EdgeInsets.all(10),
             child: Wrap(
-                children:
-                    videos.map((e) => _VideoCell(e, screenWidth)).toList()),
+                children: videos
+                    .map((e) => GestureDetector(
+                        onTap: () => _showVideo(e.path),
+                        child: _VideoCell(e, screenWidth)))
+                    .toList()),
           ),
         ],
       ),

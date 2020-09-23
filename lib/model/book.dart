@@ -6,23 +6,15 @@ class Book {
   String effectStoragePath;
   String id;
   int dbRowId;
-  // List<String> _videoPaths = [];
+  String imagePath;
   Map<String, dynamic> videoPaths;
 
   Book();
 
-  // List<String> get videoPaths {
-  //   return _videoPaths;
-  // }
-
-  // setVideoPaths(String value) {
-  //   _videoPaths = value.split('|');
-  //   print('_videoPaths $_videoPaths');
-  // }
-
   Book.fromJson(Map<String, dynamic> json)
       : title = json['title'],
         author = json['author'],
+        imagePath = json['cover'] ?? "",
         effectStoragePath = json['effect'] ?? "" {
     print("title of book $title");
   }
@@ -31,12 +23,4 @@ class Book {
         'title': title,
         'author': author,
       };
-
-  // String stringifyVideoPaths() {
-  //   String paths = '';
-  //   for (var item in videoPaths) {
-  //     paths += item + '|';
-  //   }
-  //   return paths;
-  // }
 }

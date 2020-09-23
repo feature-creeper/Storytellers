@@ -55,6 +55,8 @@ class HomeViewModel with ChangeNotifier {
   Future<Book> getBookFromFirestore(String id) async {
     CollectionReference books = FirebaseFirestore.instance.collection('books');
     DocumentSnapshot snapshot = await books.doc(id).get();
+    print("inital snapshot");
+    print(snapshot.data());
     return Book.fromJson(snapshot.data());
   }
 
