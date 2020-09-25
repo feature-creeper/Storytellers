@@ -48,7 +48,7 @@ class _FeaturedState extends State<Featured> {
                             book: snapshot.data,
                           );
                         }
-                        return CircularProgressIndicator();
+                        return _LoadingBookPlaceHolder();
                       }),
                   SizedBox(width: 15)
                 ],
@@ -58,6 +58,15 @@ class _FeaturedState extends State<Featured> {
         ),
       ],
     );
+  }
+}
+
+class _LoadingBookPlaceHolder extends StatelessWidget {
+  const _LoadingBookPlaceHolder();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(child: CircularProgressIndicator());
   }
 }
 
@@ -92,37 +101,28 @@ class __BookThumbnailState extends State<_BookThumbnail> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => widget.goToDetails(widget.book),
+      onTap: () => widget.goToDetails(widget.book, bookUrl),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              height: 105,
-              width: 90,
-              child: bookUrl == null
-                  ? Container()
-                  : Image.network(bookUrl, fit: BoxFit.cover,
-                      loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) {
-                        return child;
-                      } else {
-                        // return Center(
-                        //     child: CircularProgressIndicator(
-                        //   backgroundColor: Colors.grey[300],
-                        //   valueColor:
-                        //       AlwaysStoppedAnimation<Color>(Colors.white),
-                        //   value: loadingProgress.expectedTotalBytes != null
-                        //       ? loadingProgress.cumulativeBytesLoaded /
-                        //           loadingProgress.expectedTotalBytes
-                        //       : null,
-                        // ),
-
-                      }
-                    })),
+            clipBehavior: Clip.hardEdge,
+            decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            height: 105,
+            width: 90,
+            child: bookUrl == null
+                ? Container()
+                : Image.network(bookUrl, fit: BoxFit.cover,
+                    loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    } else {
+                      return _LoadingBookPlaceHolder();
+                    }
+                  }),
+          ),
           SizedBox(height: 5),
           Text(
             widget.book.title,

@@ -113,7 +113,9 @@ class _VideoCell extends StatelessWidget {
         child: Container(
           margin: EdgeInsets.all(10),
           decoration: BoxDecoration(
-              color: Colors.grey[300], borderRadius: BorderRadius.circular(9)),
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(9),
+          ),
         ),
       ),
       // height: 100,

@@ -19,13 +19,8 @@ class BookDetailsViewModel with ChangeNotifier {
     pr = ProgressDialog(
       context,
       type: ProgressDialogType.Normal,
-
       textDirection: TextDirection.rtl,
       isDismissible: false,
-//      customBody: LinearProgressIndicator(
-//        valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
-//        backgroundColor: Colors.white,
-//      ),
     );
 
     pr.style(

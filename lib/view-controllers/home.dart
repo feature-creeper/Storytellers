@@ -18,27 +18,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   HomeViewModel provider;
 
-  void goToBookDetails(Book book) {
+  void goToBookDetails(Book book, String imagePath) {
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (_) => ChangeNotifierProvider<BookDetailsViewModel>(
-              create: (_) => BookDetailsViewModel(book, context),
-              builder: (_, __) => BookDetails())
-
-          // (context) => ChangeNotifierProxyProvider<SavedBooksProvider,
-          //         BookDetailsViewModel>(
-          //       //create: (context) => BookDetailsViewModel(book),
-          //       update: (context, value,
-          //           bookDetails) => BookDetailsViewModel(book, context),
-          //       child: BookDetails(),
-          //     )
-
-          // ChangeNotifierProvider(
-          //   create: (_) => BookDetailsViewModel(book),
-          //   child: BookDetails(),
-          // ),
-          ),
+        builder: (_) => ChangeNotifierProvider<BookDetailsViewModel>(
+            create: (_) => BookDetailsViewModel(book, context),
+            builder: (_, __) => BookDetails(imagePath)),
+      ),
     );
   }
 

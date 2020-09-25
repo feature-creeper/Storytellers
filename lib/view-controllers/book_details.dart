@@ -7,6 +7,8 @@ import 'package:storytellers/view-model/role_select_view-model.dart';
 import 'package:stretchy_header/stretchy_header.dart';
 
 class BookDetails extends StatefulWidget {
+  final imagePath;
+  BookDetails(this.imagePath);
   @override
   _BookDetailsState createState() => _BookDetailsState();
 }
@@ -72,10 +74,15 @@ class _BookDetailsState extends State<BookDetails> {
           headerData: HeaderData(
             blurContent: false,
             headerHeight: 250,
-            header: Image.asset(
-              "assets/images/rd_cbucket1.jpg",
-              fit: BoxFit.cover,
-            ),
+            header: widget.imagePath == null
+                ? Image.asset(
+                    "assets/images/rd_cbucket1.jpg",
+                    fit: BoxFit.cover,
+                  )
+                : Image.network(
+                    widget.imagePath,
+                    fit: BoxFit.cover,
+                  ),
           ),
           itemCount: 1,
           itemBuilder: (context, index) {
