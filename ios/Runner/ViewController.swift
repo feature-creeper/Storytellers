@@ -70,20 +70,22 @@ class ViewController: UIViewController {
     
     // MARK: - IBOutlets -
 
-    @IBOutlet weak var switchCameraButton: UIButton!
+//    @IBOutlet weak var switchCameraButton: UIButton!
     
-    @IBOutlet weak var masksButton: UIButton!
-    @IBOutlet weak var effectsButton: UIButton!
-    @IBOutlet weak var filtersButton: UIButton!
+//    @IBOutlet weak var masksButton: UIButton!
+//    @IBOutlet weak var effectsButton: UIButton!
+//    @IBOutlet weak var filtersButton: UIButton!
     
-    @IBOutlet weak var previousButton: UIButton!
-    @IBOutlet weak var nextButton: UIButton!
+//    @IBOutlet weak var previousButton: UIButton!
+//    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var recordActionButton: UIButton!
     
-    @IBOutlet weak var lowQVideoButton: UIButton!
-    @IBOutlet weak var videoButton: UIButton!
-    @IBOutlet weak var photoButton: UIButton!
+//    @IBOutlet weak var lowQVideoButton: UIButton!
+//    @IBOutlet weak var videoButton: UIButton!
+//    @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var arViewContainer: UIView!
+    
+    
     
     private var deepAR: DeepAR!
     private var arView: ARView!
@@ -130,6 +132,10 @@ class ViewController: UIViewController {
     var maskPath:String?
     
     
+    let story = StoryText()
+    
+    @IBOutlet weak var storyLabel: UILabel!
+    
     // MARK: - Lifecycle -
     
     override func viewDidLoad() {
@@ -138,13 +144,16 @@ class ViewController: UIViewController {
         setupDeepARAndCamera()
         addTargets()
         
-        buttonModePairs = [(masksButton, .masks), (effectsButton, .effects), (filtersButton, .filters)]
-        buttonRecordingModePairs = [ (photoButton, RecordingMode.photo), (videoButton, RecordingMode.video), (lowQVideoButton, RecordingMode.lowQualityVideo)]
+//        buttonModePairs = [(masksButton, .masks), (effectsButton, .effects), (filtersButton, .filters)]
+//        buttonRecordingModePairs = [ (photoButton, RecordingMode.photo), (videoButton, RecordingMode.video), (lowQVideoButton, RecordingMode.lowQualityVideo)]
         currentMode = .masks
-        currentRecordingMode = .photo
+//        currentRecordingMode = .photo
         
-        
+        currentRecordingMode = .video
         deepAR.switchEffect(withSlot: "masks", path: maskPath)
+        
+        storyLabel.text = story.currentPageText
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -184,18 +193,18 @@ class ViewController: UIViewController {
     }
     
     private func addTargets() {
-        switchCameraButton.addTarget(self, action: #selector(didTapSwitchCameraButton), for: .touchUpInside)
+//        switchCameraButton.addTarget(self, action: #selector(didTapSwitchCameraButton), for: .touchUpInside)
         recordActionButton.addTarget(self, action: #selector(didTapRecordActionButton), for: .touchUpInside)
-        previousButton.addTarget(self, action: #selector(didTapPreviousButton), for: .touchUpInside)
-        nextButton.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
-        masksButton.addTarget(self, action: #selector(didTapMasksButton), for: .touchUpInside)
-        effectsButton.addTarget(self, action: #selector(didTapEffectsButton), for: .touchUpInside)
-        filtersButton.addTarget(self, action: #selector(didTapFiltersButton), for: .touchUpInside)
+//        previousButton.addTarget(self, action: #selector(didTapPreviousButton), for: .touchUpInside)
+//        nextButton.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
+//        masksButton.addTarget(self, action: #selector(didTapMasksButton), for: .touchUpInside)
+//        effectsButton.addTarget(self, action: #selector(didTapEffectsButton), for: .touchUpInside)
+//        filtersButton.addTarget(self, action: #selector(didTapFiltersButton), for: .touchUpInside)
         
         
-        photoButton.addTarget(self, action: #selector(didTapPhotoButton), for: .touchUpInside)
-        videoButton.addTarget(self, action: #selector(didTapVideoButton), for: .touchUpInside)
-        lowQVideoButton.addTarget(self, action: #selector(didTapLowQVideoButton), for: .touchUpInside)
+//        photoButton.addTarget(self, action: #selector(didTapPhotoButton), for: .touchUpInside)
+//        videoButton.addTarget(self, action: #selector(didTapVideoButton), for: .touchUpInside)
+//        lowQVideoButton.addTarget(self, action: #selector(didTapLowQVideoButton), for: .touchUpInside)
     }
     
     private func updateModeAppearance() {
@@ -281,43 +290,60 @@ class ViewController: UIViewController {
         
     }
     
-    @objc
-    private func didTapPreviousButton() {
-        var path: String?
-        
-        switch currentMode! {
-        case .effects:
-            effectIndex = (effectIndex - 1 < 0) ? (effectPaths.count - 1) : (effectIndex - 1)
-            path = effectPaths[effectIndex]
-        case .masks:
-            maskIndex = (maskIndex - 1 < 0) ? (maskPaths.count - 1) : (maskIndex - 1)
-            path = maskPaths[maskIndex]
-        case .filters:
-            filterIndex = (filterIndex - 1 < 0) ? (filterPaths.count - 1) : (filterIndex - 1)
-            path = filterPaths[filterIndex]
+//    @objc
+//    private func didTapPreviousButton() {
+//        var path: String?
+//
+//        switch currentMode! {
+//        case .effects:
+//            effectIndex = (effectIndex - 1 < 0) ? (effectPaths.count - 1) : (effectIndex - 1)
+//            path = effectPaths[effectIndex]
+//        case .masks:
+//            maskIndex = (maskIndex - 1 < 0) ? (maskPaths.count - 1) : (maskIndex - 1)
+//            path = maskPaths[maskIndex]
+//        case .filters:
+//            filterIndex = (filterIndex - 1 < 0) ? (filterPaths.count - 1) : (filterIndex - 1)
+//            path = filterPaths[filterIndex]
+//        }
+//
+//        switchMode(path)
+//    }
+//
+//    @objc
+//    private func didTapNextButton() {
+//        var path: String?
+//
+//        switch currentMode! {
+//        case .effects:
+//            effectIndex = (effectIndex + 1 > effectPaths.count - 1) ? 0 : (effectIndex + 1)
+//            path = effectPaths[effectIndex]
+//        case .masks:
+//            maskIndex = (maskIndex + 1 > maskPaths.count - 1) ? 0 : (maskIndex + 1)
+//            path = maskPaths[maskIndex]
+//        case .filters:
+//            filterIndex = (filterIndex + 1 > filterPaths.count - 1) ? 0 : (filterIndex + 1)
+//            path = filterPaths[filterIndex]
+//        }
+//
+//        switchMode(path)
+//    }
+    
+    @IBAction func tappedNextPage(_ sender: Any) {
+        if story.currentPage < (story.story.count - 1) {
+            story.currentPage += 1 
         }
-        
-        switchMode(path)
+        storyLabel.text = story.currentPageText
     }
     
-    @objc
-    private func didTapNextButton() {
-        var path: String?
-        
-        switch currentMode! {
-        case .effects:
-            effectIndex = (effectIndex + 1 > effectPaths.count - 1) ? 0 : (effectIndex + 1)
-            path = effectPaths[effectIndex]
-        case .masks:
-            maskIndex = (maskIndex + 1 > maskPaths.count - 1) ? 0 : (maskIndex + 1)
-            path = maskPaths[maskIndex]
-        case .filters:
-            filterIndex = (filterIndex + 1 > filterPaths.count - 1) ? 0 : (filterIndex + 1)
-            path = filterPaths[filterIndex]
+    
+    @IBAction func tappedPrevPage(_ sender: Any) {
+        if story.currentPage > 0 {
+            story.currentPage -= 1
         }
+        storyLabel.text = story.currentPageText
         
-        switchMode(path)
     }
+    
     
     @objc
     private func didTapMasksButton() {
@@ -377,14 +403,19 @@ extension ViewController: DeepARDelegate {
         guard let last = components.last else { return }
         let destination = URL(fileURLWithPath: String(format: "%@/%@", documentsDirectory, last))
         
-//        guard let videoPath = destination.absoluteString else {return}
+
         
-        DispatchQueue.main.async {
-          // Call the desired channel message here.
-            self.flutterResult!(destination.absoluteString)
-            
-            self.close()
-        }
+//        DispatchQueue.main.async {
+//          // Call the desired channel message here.
+//            self.flutterResult!(destination.absoluteString)
+//            self.close()
+//        }
+//        let file = documentsDirectory.ap
+        print(documentsDirectory)
+        
+        
+        let videoCompositor = VideoCompositor(view)
+        videoCompositor.composite(url: URL(fileURLWithPath: videoFilePath))
         
     
 //        let playerController = AVPlayerViewController()
@@ -396,29 +427,29 @@ extension ViewController: DeepARDelegate {
     }
     
     func recordingFailedWithError(_ error: Error!) {}
-    
-    func didTakeScreenshot(_ screenshot: UIImage!) {
-        UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil)
-        
-        let imageView = UIImageView(image: screenshot)
-        imageView.frame = view.frame
-        view.insertSubview(imageView, aboveSubview: arView)
-        
-        let flashView = UIView(frame: view.frame)
-        flashView.alpha = 0
-        flashView.backgroundColor = .black
-        view.insertSubview(flashView, aboveSubview: imageView)
-        
-        UIView.animate(withDuration: 0.1, animations: {
-            flashView.alpha = 1
-        }) { _ in
-            flashView.removeFromSuperview()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                imageView.removeFromSuperview()
-            }
-        }
-    }
+//
+//    func didTakeScreenshot(_ screenshot: UIImage!) {
+//        UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil)
+//
+//        let imageView = UIImageView(image: screenshot)
+//        imageView.frame = view.frame
+//        view.insertSubview(imageView, aboveSubview: arView)
+//
+//        let flashView = UIView(frame: view.frame)
+//        flashView.alpha = 0
+//        flashView.backgroundColor = .black
+//        view.insertSubview(flashView, aboveSubview: imageView)
+//
+//        UIView.animate(withDuration: 0.1, animations: {
+//            flashView.alpha = 1
+//        }) { _ in
+//            flashView.removeFromSuperview()
+//
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+//                imageView.removeFromSuperview()
+//            }
+//        }
+//    }
     
     func didInitialize() {}
     

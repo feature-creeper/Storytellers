@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -44,10 +45,24 @@ class BookDetailsViewModel with ChangeNotifier {
 
   final dbHelper = DatabaseHelper.instance;
 
-  void tappedAddToMyBooks() {
+  void tappedAddToMyBooks() async {
     final StorageReference ref =
         FirebaseStorage().ref().child(book.effectStoragePath);
+    await _downloadBookCoverImage();
     _downloadFile(ref);
+  }
+
+  Future _downloadBookCoverImage() async {
+    Directory appDocDir = await getApplicationDocumentsDirectory();
+    String path = appDocDir.path + '/' + book.imagePath;
+    final StorageReference imageRef =
+        FirebaseStorage().ref().child(book.imagePath);
+    StreamSubscription ss =
+        imageRef.writeToFile(File(path)).future.asStream().listen((event) {});
+
+    Future f1 = ss.asFuture();
+
+    return f1.whenComplete(() => print("GOT BOOK COVER"));
   }
 
   void _saveBookLocally(String effectPath) async {

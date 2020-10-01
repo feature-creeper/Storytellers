@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
+		6916E04925234CBF00E718CF /* StoryText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6916E04825234CBF00E718CF /* StoryText.swift */; };
 		69A49F82250783FB000D1579 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A49F81250783FB000D1579 /* ViewController.swift */; };
 		69A49F8625078E1A000D1579 /* DeepAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A49F84250786D0000D1579 /* DeepAR.framework */; };
 		69A49F8725078E1A000D1579 /* DeepAR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 69A49F84250786D0000D1579 /* DeepAR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -42,6 +43,7 @@
 		69A49FC325079690000D1579 /* tv80 in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F94250790EA000D1579 /* tv80 */; };
 		69A49FC425079690000D1579 /* twistedFace in Resources */ = {isa = PBXBuildFile; fileRef = 69A49FA3250790EA000D1579 /* twistedFace */; };
 		69C102E2250A459700A70386 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 69C102E1250A459700A70386 /* GoogleService-Info.plist */; };
+		69EDDC272524B1ED005AD646 /* VideoCompositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EDDC262524B1ED005AD646 /* VideoCompositor.swift */; };
 		747D40F5EAD50CA47D3ED24F /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78157AB2D04BFCCE265C0A9 /* Pods_Runner.framework */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
@@ -67,6 +69,7 @@
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
+		6916E04825234CBF00E718CF /* StoryText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryText.swift; sourceTree = "<group>"; };
 		69A49F81250783FB000D1579 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		69A49F84250786D0000D1579 /* DeepAR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DeepAR.framework; sourceTree = "<group>"; };
 		69A49F8B250790EA000D1579 /* mudMask */ = {isa = PBXFileReference; lastKnownFileType = file; name = mudMask; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/mudMask"; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 		69A49FA6250790EA000D1579 /* grumpycat */ = {isa = PBXFileReference; lastKnownFileType = file; name = grumpycat; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/grumpycat"; sourceTree = "<group>"; };
 		69A49FA7250790EA000D1579 /* bigmouth */ = {isa = PBXFileReference; lastKnownFileType = file; name = bigmouth; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/bigmouth"; sourceTree = "<group>"; };
 		69C102E1250A459700A70386 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		69EDDC262524B1ED005AD646 /* VideoCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCompositor.swift; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 				69A49F81250783FB000D1579 /* ViewController.swift */,
+				6916E04825234CBF00E718CF /* StoryText.swift */,
+				69EDDC262524B1ED005AD646 /* VideoCompositor.swift */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -408,7 +414,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6916E04925234CBF00E718CF /* StoryText.swift in Sources */,
 				69A49F82250783FB000D1579 /* ViewController.swift in Sources */,
+				69EDDC272524B1ED005AD646 /* VideoCompositor.swift in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 			);

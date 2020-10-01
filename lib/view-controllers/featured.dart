@@ -66,7 +66,10 @@ class _LoadingBookPlaceHolder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: CircularProgressIndicator());
+    return Container(
+        width: 90,
+        height: 105,
+        child: Center(child: CircularProgressIndicator()));
   }
 }
 
