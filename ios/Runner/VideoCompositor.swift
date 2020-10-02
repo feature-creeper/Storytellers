@@ -13,6 +13,11 @@ import Photos
 
 class VideoCompositor {
     
+    let dummyText = """
+    His laugh was inside him all the time.
+    I just made him happy and out it came" replied Monkey
+    """
+    
      var myurl: URL?
     
     let view:UIView?
@@ -84,6 +89,7 @@ class VideoCompositor {
         }
 
         
+        let pageHeight : CGFloat = 550
         
         
         // Watermark Effect
@@ -97,25 +103,35 @@ class VideoCompositor {
 
         // create text Layer
         
+        let backgroundLayer = CALayer()
+        backgroundLayer.backgroundColor = UIColor.white.cgColor
+        backgroundLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: pageHeight)
+        
         let titleLayerHeight = size.height / 6
         let titleLayer = CATextLayer()
-        titleLayer.backgroundColor = UIColor.blue.cgColor
-        titleLayer.string = "Dummy text"
-        titleLayer.font = UIFont(name: "Helvetica", size: 40)
-        titleLayer.foregroundColor = UIColor.white.cgColor
+        titleLayer.backgroundColor = UIColor.white.cgColor
+        titleLayer.string = dummyText
+        titleLayer.font = UIFont(name: "Helvetica", size: 56)
+        titleLayer.foregroundColor = UIColor.black.cgColor
         titleLayer.shadowOpacity = 0.5
-        titleLayer.alignmentMode = CATextLayerAlignmentMode.center
-        titleLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: 400)
-
+        titleLayer.alignmentMode = CATextLayerAlignmentMode.left
+        titleLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: pageHeight)
+        titleLayer.isWrapped = true
+        titleLayer.fontSize = 70
+        titleLayer.shadowOpacity = 0
+        titleLayer.bounds.size.width = size.width - 70
+        titleLayer.bounds.size.height = pageHeight - 70
+        
 
         let videolayer = CALayer()
-        videolayer.frame = CGRect(x: 0, y: 500, width: size.width, height: size.height)
+        videolayer.frame = CGRect(x: 0, y: pageHeight, width: size.width, height: size.height - 100)
 
         let parentlayer = CALayer()
-        parentlayer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height + 800)
+        parentlayer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        parentlayer.addSublayer(backgroundLayer)
         parentlayer.addSublayer(titleLayer)
         parentlayer.addSublayer(videolayer)
-        parentlayer.addSublayer(imglayer)
+//        parentlayer.addSublayer(imglayer)
         
 
         let layercomposition = AVMutableVideoComposition()

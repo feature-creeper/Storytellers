@@ -43,6 +43,7 @@
 		69A49FC325079690000D1579 /* tv80 in Resources */ = {isa = PBXBuildFile; fileRef = 69A49F94250790EA000D1579 /* tv80 */; };
 		69A49FC425079690000D1579 /* twistedFace in Resources */ = {isa = PBXBuildFile; fileRef = 69A49FA3250790EA000D1579 /* twistedFace */; };
 		69C102E2250A459700A70386 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 69C102E1250A459700A70386 /* GoogleService-Info.plist */; };
+		69E4C64025276F8800B7F56D /* PageTurnTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E4C63F25276F8800B7F56D /* PageTurnTimer.swift */; };
 		69EDDC272524B1ED005AD646 /* VideoCompositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EDDC262524B1ED005AD646 /* VideoCompositor.swift */; };
 		747D40F5EAD50CA47D3ED24F /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78157AB2D04BFCCE265C0A9 /* Pods_Runner.framework */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
@@ -102,6 +103,7 @@
 		69A49FA6250790EA000D1579 /* grumpycat */ = {isa = PBXFileReference; lastKnownFileType = file; name = grumpycat; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/grumpycat"; sourceTree = "<group>"; };
 		69A49FA7250790EA000D1579 /* bigmouth */ = {isa = PBXFileReference; lastKnownFileType = file; name = bigmouth; path = "../../../../Documents/Storytellers/DeepARStudio/quickstart-ios-swift-master/quickstart-ios-swift/Effects/bigmouth"; sourceTree = "<group>"; };
 		69C102E1250A459700A70386 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		69E4C63F25276F8800B7F56D /* PageTurnTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTurnTimer.swift; sourceTree = "<group>"; };
 		69EDDC262524B1ED005AD646 /* VideoCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCompositor.swift; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				69A49F81250783FB000D1579 /* ViewController.swift */,
 				6916E04825234CBF00E718CF /* StoryText.swift */,
 				69EDDC262524B1ED005AD646 /* VideoCompositor.swift */,
+				69E4C63F25276F8800B7F56D /* PageTurnTimer.swift */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				6916E04925234CBF00E718CF /* StoryText.swift in Sources */,
 				69A49F82250783FB000D1579 /* ViewController.swift in Sources */,
 				69EDDC272524B1ED005AD646 /* VideoCompositor.swift in Sources */,
+				69E4C64025276F8800B7F56D /* PageTurnTimer.swift in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 			);

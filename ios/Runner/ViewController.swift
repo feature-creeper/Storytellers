@@ -134,6 +134,8 @@ class ViewController: UIViewController {
     
     let story = StoryText()
     
+    var pageTurnTimer : PageTurnTimer?
+    
     @IBOutlet weak var storyLabel: UILabel!
     
     // MARK: - Lifecycle -
@@ -143,6 +145,8 @@ class ViewController: UIViewController {
         
         setupDeepARAndCamera()
         addTargets()
+        
+        pageTurnTimer = PageTurnTimer(text: story)
         
 //        buttonModePairs = [(masksButton, .masks), (effectsButton, .effects), (filtersButton, .filters)]
 //        buttonRecordingModePairs = [ (photoButton, RecordingMode.photo), (videoButton, RecordingMode.video), (lowQVideoButton, RecordingMode.lowQualityVideo)]
@@ -333,6 +337,8 @@ class ViewController: UIViewController {
             story.currentPage += 1 
         }
         storyLabel.text = story.currentPageText
+        
+        pageTurnTimer?.endTimer()
     }
     
     
