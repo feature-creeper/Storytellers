@@ -15,11 +15,6 @@ class VideoCompositor {
     
     var pageTimes : [(Int, Int)]
     
-    let dummyText = """
-    His laugh was inside him all the time.
-    I just made him happy and out it came" replied Monkey
-    """
-    
     var myurl: URL?
     
     let view:UIView?
@@ -30,49 +25,26 @@ class VideoCompositor {
         self.view = view
         self.pageTimes = pageTimes
         self.storyText = storyText
-        
-        print(pageTimes)
     }
     
     func composite(url:URL) {
         
         let composition = AVMutableComposition()
-        //        let vidAsset = AVURLAsset(url: url as URL, options: nil)
         let vidAsset = AVAsset(url: url)
-        
-        print("url \(url)")
         
         // get video track
         let vtrack =  vidAsset.tracks(withMediaType: AVMediaType.video)
-        //        let videoTrack: AVAssetTrack = vtrack[0]
         
-        print("Video tracks \(vtrack.count)")
-        //
-        let playableKey = "playable"
         
-        //        vidAsset.loadValuesAsynchronously(forKeys: [playableKey]) {
-        //            var error: NSError? = nil
-        //            let status = vidAsset.statusOfValue(forKey: playableKey, error: &error)
-        //            switch status {
-        //            case .loaded:
-        //                print("LOADED")
-        //                let vtrack =  vidAsset.tracks(withMediaType: AVMediaType.video)
-        //                print("Video tracks \(vtrack.count)")
-        //            case .failed:
-        //                print("FAILED")
-        //            case .cancelled:
-        //                print("CAncelled")
-        //            default:
-        //                print("OTHER")
-        //            }
-        //        }
+        
+        
+        let assetAudioTrack: AVAssetTrack = vidAsset.tracks(withMediaType: AVMediaType.audio)[0]
+        
         
         
         
         let videoTrack: AVAssetTrack = vtrack[0]
         let vid_timerange = CMTimeRangeMake(start: CMTime.zero, duration: vidAsset.duration)
-        
-        print("VID SECONDS \(vid_timerange.duration.seconds)")
         
         let tr: CMTimeRange = CMTimeRange(start: CMTime.zero, duration: CMTime(seconds: 1.0, preferredTimescale: 600))
         composition.insertEmptyTimeRange(tr)
@@ -85,11 +57,34 @@ class VideoCompositor {
             
             do {
                 try compositionvideoTrack.insertTimeRange(vid_timerange, of: videoTrack, at: CMTime.zero)
+                
+                
+                //                let a = composition.addMutableTrack(withMediaType: AVMediaType.audio, preferredTrackID: kCMPersistentTrackID_Invalid)
+                //                a?.insertTimeRange(vid_timerange, of: assetAudioTrack, at: CMTime.zero)
             } catch {
                 print("error")
             }
             
             compositionvideoTrack.preferredTransform = videoTrack.preferredTransform
+            
+        } else {
+            print("unable to add video track")
+            return
+        }
+        
+        if let compositionaudioTrack: AVMutableCompositionTrack = composition.addMutableTrack(withMediaType: AVMediaType.audio, preferredTrackID: trackID) {
+            
+            do {
+                try compositionaudioTrack.insertTimeRange(vid_timerange, of: assetAudioTrack, at: CMTime.zero)
+                
+                
+                //                let a = composition.addMutableTrack(withMediaType: AVMediaType.audio, preferredTrackID: kCMPersistentTrackID_Invalid)
+                //                a?.insertTimeRange(vid_timerange, of: assetAudioTrack, at: CMTime.zero)
+            } catch {
+                print("error")
+            }
+            
+//            compositionvideoTrack.preferredTransform = videoTrack.preferredTransform
             
         } else {
             print("unable to add video track")
@@ -103,61 +98,29 @@ class VideoCompositor {
         // Watermark Effect
         let size = videoTrack.naturalSize
         
-        let imglogo = #imageLiteral(resourceName: "ArrowRight")
-        let imglayer = CALayer()
-        imglayer.contents = imglogo.cgImage
-        imglayer.frame = CGRect(x: 5, y: 5, width: 100, height: 100)
-        imglayer.opacity = 0.6
-        
-        // create text Layer
-        
-        let backgroundLayer = CALayer()
-        backgroundLayer.backgroundColor = UIColor.white.cgColor
-        backgroundLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: pageHeight)
-        
-        let titleLayerHeight = size.height / 6
-        let titleLayer = CATextLayer()
-        titleLayer.backgroundColor = UIColor.white.cgColor
-        titleLayer.string = dummyText
-        titleLayer.font = UIFont(name: "Helvetica", size: 56)
-        titleLayer.foregroundColor = UIColor.black.cgColor
-        titleLayer.shadowOpacity = 0.5
-        titleLayer.alignmentMode = CATextLayerAlignmentMode.left
-        titleLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: pageHeight)
-        titleLayer.isWrapped = true
-        titleLayer.fontSize = 70
-        titleLayer.shadowOpacity = 0
-        titleLayer.bounds.size.width = size.width - 70
-        titleLayer.bounds.size.height = pageHeight - 70
-        
-        
         let videolayer = CALayer()
         videolayer.frame = CGRect(x: 0, y: pageHeight, width: size.width, height: size.height - 100)
         
         let parentlayer = CALayer()
         parentlayer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        parentlayer.addSublayer(backgroundLayer)
-        //        parentlayer.addSublayer(titleLayer)
         parentlayer.addSublayer(videolayer)
         
         createTextLayers(parentLayer: parentlayer,pageHeight: pageHeight,size: size)
         
-        
-        //        let animation = CABasicAnimation(keyPath: "opacity")
-        //        animation.fromValue = 1
-        //        animation.toValue = 0
-        //        animation.duration = 3
-        //        animation.beginTime = CFTimeInterval(floatLiteral: 3.5)//CFTimeInterval(exactly: 5)!//AVCoreAnimationBeginTimeAtZero//
-        //        titleLayer.add(animation, forKey: "opacity")
-        
-        
-        //        parentlayer.addSublayer(imglayer)
         
         
         let layercomposition = AVMutableVideoComposition()
         layercomposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
         layercomposition.renderSize = size
         layercomposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videolayer, in: parentlayer)
+        
+        
+        
+        
+        
+        /* Add audio track */
+        //        AVMutableCompositionTrack *compositionAudioTrack = [composition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
+        //        [compositionAudioTrack insertTimeRange:fullTime ofTrack:sourceAudioTrack atTime:kCMTimeZero error:nil];
         
         
         // instruction for watermark
@@ -207,21 +170,21 @@ class VideoCompositor {
                     }
                 }
                 
-                self.playVideo()
+//                self.playVideo()
                 
             }
         }
         )
     }
     
-    func playVideo() {
-        let player = AVPlayer(url: myurl!)
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = self.view!.bounds
-        self.view!.layer.addSublayer(playerLayer)
-        player.play()
-        print("playing...")
-    }
+//    func playVideo() {
+//        let player = AVPlayer(url: myurl!)
+//        let playerLayer = AVPlayerLayer(player: player)
+//        playerLayer.frame = self.view!.bounds
+//        self.view!.layer.addSublayer(playerLayer)
+//        player.play()
+//        print("playing...")
+//    }
     
     
     //U can add another white layer that fades in a second before
@@ -276,7 +239,7 @@ class VideoCompositor {
             animation.fillMode = CAMediaTimingFillMode.forwards;
             animation.isRemovedOnCompletion = false
             animationParentLayer.add(animation, forKey: "opacity")
-
+            
             
             //Fade out animation
             

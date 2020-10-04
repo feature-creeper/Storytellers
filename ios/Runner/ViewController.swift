@@ -158,6 +158,7 @@ class ViewController: UIViewController {
         
         storyLabel.text = story.currentPageText
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
