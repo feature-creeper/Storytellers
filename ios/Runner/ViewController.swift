@@ -264,6 +264,7 @@ class ViewController: UIViewController {
         }
         
         if (isRecordingInProcess) {
+            recordPageTurn()
             deepAR.finishVideoRecording()
             isRecordingInProcess = false
             return
@@ -273,6 +274,7 @@ class ViewController: UIViewController {
         let height: Int32 =  Int32(deepAR.renderingResolution.height)
         
         if (currentRecordingMode == RecordingMode.video) {
+            //recordPageTurn()
             deepAR.startVideoRecording(withOutputWidth: width, outputHeight: height)
             isRecordingInProcess = true
             

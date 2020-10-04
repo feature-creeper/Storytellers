@@ -233,20 +233,13 @@ class VideoCompositor {
             
             let animationParentLayer = CALayer()
             animationParentLayer.opacity = 0
-            
+            animationParentLayer.backgroundColor = UIColor.white.cgColor
             animationParentLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: pageHeight)
             
             let titleLayer = CATextLayer()
-//            titleLayer.string = storyText.story[page.0]// page.0 - get from story text array
-            
-//            titleLayer.frame = animationParentLayer.frame//CGRect(x: 0, y: 0, width: size.width, height: pageHeight)
-//            titleLayer.font = UIFont(name: "Helvetica", size: 56)
-//            titleLayer.foregroundColor = UIColor.black.cgColor
-//            titleLayer.backgroundColor = UIColor.white.cgColor
-//            titleLayer.opacity = 0
             
             titleLayer.backgroundColor = UIColor.white.cgColor
-            titleLayer.string = "STORY PAGE \(page.0)"//storyText.story[page.0]
+            titleLayer.string = storyText.story[page.0]//"STORY PAGE \(page.0)"//
             titleLayer.font = UIFont(name: "Helvetica", size: 56)
             titleLayer.foregroundColor = UIColor.black.cgColor
             titleLayer.shadowOpacity = 0.5
@@ -261,11 +254,10 @@ class VideoCompositor {
             animationParentLayer.addSublayer(titleLayer)
             parentLayer.addSublayer(animationParentLayer)
             
-//            parentLayer.insertSublayer(animationParentLayer, at: 1)
             
             //Fade in animation
             
-            var startTime : Double = 0;
+            var startTime : Double = 0.1;
             for item in pageTimes {
                 if item.0 < page.0 {
                     startTime += Double(item.1)
@@ -274,6 +266,8 @@ class VideoCompositor {
             
             let startTimeMilliseconds = startTime / 1000
             
+            
+            
             let animation = CABasicAnimation(keyPath: "opacity")
             animation.fromValue = 0
             animation.toValue = 1
@@ -281,7 +275,6 @@ class VideoCompositor {
             animation.beginTime = CFTimeInterval(floatLiteral: startTimeMilliseconds)//CFTimeInterval(exactly: 5)!//AVCoreAnimationBeginTimeAtZero//
             animation.fillMode = CAMediaTimingFillMode.forwards;
             animation.isRemovedOnCompletion = false
-            //animation.autoreverses  = true
             animationParentLayer.add(animation, forKey: "opacity")
 
             
@@ -304,16 +297,10 @@ class VideoCompositor {
             fadeOutAnimation.fillMode = CAMediaTimingFillMode.forwards;
             fadeOutAnimation.isRemovedOnCompletion = false
             
-            //titleLayer.add(fadeOutAnimation, forKey: "opacity")
+            titleLayer.add(fadeOutAnimation, forKey: "opacity")
             
-//            let fadeInAndOut = CAAnimationGroup()
-//            fadeInAndOut.animations = [animation, fadeOutAnimation]
-//            fadeInAndOut.duration = 8
-//            fadeInAndOut.fillMode = CAMediaTimingFillMode.forwards;
-//            fadeInAndOut.isRemovedOnCompletion = false
-//            titleLayer.add(fadeInAndOut, forKey: nil)
             
-            print("PAGE \(page.0) IN \(startTimeMilliseconds) OUT \(outTimeMilliseconds) LAYER \(parentLayer.sublayers)")
+            print("PAGE \(page.0) IN \(startTimeMilliseconds) OUT \(outTimeMilliseconds)")
         }
         
     }
