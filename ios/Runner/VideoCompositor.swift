@@ -13,17 +13,22 @@ import Photos
 
 class VideoCompositor {
     
+    var pageTimes : [(Int, Int)]
+    
     let dummyText = """
     His laugh was inside him all the time.
     I just made him happy and out it came" replied Monkey
     """
     
-     var myurl: URL?
+    var myurl: URL?
     
     let view:UIView?
     
-    init(_ view: UIView) {
+    init(_ view: UIView, pageTimes: [(Int, Int)]) {
         self.view = view
+        self.pageTimes = pageTimes
+        
+        print(pageTimes)
     }
     
     func composite(url:URL) {
@@ -131,6 +136,18 @@ class VideoCompositor {
         parentlayer.addSublayer(backgroundLayer)
         parentlayer.addSublayer(titleLayer)
         parentlayer.addSublayer(videolayer)
+        
+        createTextLayers(parentLayer: parentlayer,pageHeight: pageHeight,size: size)
+        
+        
+        let animation = CABasicAnimation(keyPath: "opacity")
+        animation.fromValue = 1
+        animation.toValue = 0
+        animation.duration = 3
+        animation.beginTime = CFTimeInterval(floatLiteral: 3.5)//CFTimeInterval(exactly: 5)!//AVCoreAnimationBeginTimeAtZero//
+        titleLayer.add(animation, forKey: "opacity")
+    
+        
 //        parentlayer.addSublayer(imglayer)
         
 
@@ -138,7 +155,6 @@ class VideoCompositor {
         layercomposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
         layercomposition.renderSize = size
         layercomposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videolayer, in: parentlayer)
-        
         
         
         // instruction for watermark
@@ -194,7 +210,7 @@ class VideoCompositor {
         }
     )
     }
-    
+        
     func playVideo() {
         let player = AVPlayer(url: myurl!)
         let playerLayer = AVPlayerLayer(player: player)
@@ -202,6 +218,21 @@ class VideoCompositor {
         self.view!.layer.addSublayer(playerLayer)
         player.play()
         print("playing...")
+    }
+    
+    func createTextLayers(parentLayer:CALayer, pageHeight : CGFloat, size : CGSize) {
+        
+        
+        for page in pageTimes {
+            let titleLayer = CATextLayer()
+            titleLayer.string = "THIS IS SOME TERE"// page.0 - get from story text array
+            print("ADD LAYER \(page.0)")
+            titleLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: pageHeight)
+            titleLayer.font = UIFont(name: "Helvetica", size: 56)
+            titleLayer.foregroundColor = UIColor.black.cgColor
+            parentLayer.addSublayer(titleLayer)
+        }
+        
     }
 }
 

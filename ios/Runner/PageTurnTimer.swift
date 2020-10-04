@@ -9,76 +9,40 @@ import Foundation
 
 
 class PageTurnTimer : NSObject{
-    let text:StoryText
     
-    var timeStart : Double
-    var secondsPassed = 0
+    var couplet : [(Int, Int)] = []
     
-    init(text:StoryText) {
-        self.text = text
-        
-        //timer.fire()
-        let startInterval = Date().timeIntervalSince1970
-        print(startInterval)
-        timeStart = startInterval * 1000
-        print(timeStart)
+    private var page = 0
+    private var timeStart : Double = 0
+    private var secondsPassed = 0
+    
+    
+    func initialise(page:Int) {
+        self.page = page
+        startTimer()
     }
     
+    func turnPageTapped(newPage:Int) {
+        endTimer()
+        page = newPage
+        startTimer()
+    }
     
+    private func startTimer() {
+        let startInterval = Date().timeIntervalSince1970
+        timeStart = startInterval * 1000
+    }
     
-    func endTimer() { // Perhaps add page in here
-//         let timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+    private func endTimer() {
         let endInterval = Date().timeIntervalSince1970
         let endMillis = endInterval * 1000
-        
         let timeInMillis = Int(endMillis - timeStart)
-        print("Milli: \(timeInMillis)")
+        
+        insertPageIntoArray(milliseconds: timeInMillis)
     }
     
-    let couplet = [(2,234),(234,78)]
-    
-    
-    
-    //Create timer
-    //Create struct that keeps list of pages and time on each page
-    
-//    let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
-   
-    
-//    @objc
-//    func fireTimer(){
-//        secondsPassed += 1
-//        print("Seconds : \(secondsPassed)")
-//    }
-    
-}
-
-extension TimeInterval {
-     var milliseconds: Int {
-        return Int((truncatingRemainder(dividingBy: 1)) * 1000)
+    private func insertPageIntoArray(milliseconds:Int) {
+        couplet.append((page, milliseconds))
     }
-
-    private var seconds: Int {
-        return Int(self) % 60
-    }
-
-    private var minutes: Int {
-        return (Int(self) / 60 ) % 60
-    }
-
-    private var hours: Int {
-        return Int(self) / 3600
-    }
-
-    var stringTime: String {
-        if hours != 0 {
-            return "\(hours)h \(minutes)m \(seconds)s"
-        } else if minutes != 0 {
-            return "\(minutes)m \(seconds)s"
-        } else if milliseconds != 0 {
-            return "\(seconds)s \(milliseconds)ms"
-        } else {
-            return "\(seconds)s"
-        }
-    }
+    
 }
