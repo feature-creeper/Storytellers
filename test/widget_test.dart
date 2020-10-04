@@ -20,10 +20,5 @@ void main() {
   test('Fetch featured book ids', () async {
     FirestoreServices fs = FirestoreServices();
     List<String> ids = await fs.getFeatured('featured');
-
-    when
-    
-    expect(ids, isNotEmpty);
-    
   });
 }

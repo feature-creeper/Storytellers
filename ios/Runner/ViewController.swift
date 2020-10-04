@@ -430,7 +430,7 @@ extension ViewController: DeepARDelegate {
         print(documentsDirectory)
         
         
-        let videoCompositor = VideoCompositor(view,pageTimes: pageTurnTimer!.couplet)
+        let videoCompositor = VideoCompositor(view,pageTimes: pageTurnTimer!.couplet,storyText: story)
         videoCompositor.composite(url: URL(fileURLWithPath: videoFilePath))
         
         

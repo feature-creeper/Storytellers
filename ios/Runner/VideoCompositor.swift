@@ -24,9 +24,12 @@ class VideoCompositor {
     
     let view:UIView?
     
-    init(_ view: UIView, pageTimes: [(Int, Int)]) {
+    let storyText:StoryText
+    
+    init(_ view: UIView, pageTimes: [(Int, Int)],storyText:StoryText) {
         self.view = view
         self.pageTimes = pageTimes
+        self.storyText = storyText
         
         print(pageTimes)
     }
@@ -228,21 +231,37 @@ class VideoCompositor {
         
         for page in pageTimes {
             
-            
             let animationParentLayer = CALayer()
+            animationParentLayer.opacity = 0
+            
             animationParentLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: pageHeight)
             
             let titleLayer = CATextLayer()
-            titleLayer.string = "THIS IS SOME TERE \(page.0)"// page.0 - get from story text array
+//            titleLayer.string = storyText.story[page.0]// page.0 - get from story text array
             
-            titleLayer.frame = animationParentLayer.frame//CGRect(x: 0, y: 0, width: size.width, height: pageHeight)
+//            titleLayer.frame = animationParentLayer.frame//CGRect(x: 0, y: 0, width: size.width, height: pageHeight)
+//            titleLayer.font = UIFont(name: "Helvetica", size: 56)
+//            titleLayer.foregroundColor = UIColor.black.cgColor
+//            titleLayer.backgroundColor = UIColor.white.cgColor
+//            titleLayer.opacity = 0
+            
+            titleLayer.backgroundColor = UIColor.white.cgColor
+            titleLayer.string = "STORY PAGE \(page.0)"//storyText.story[page.0]
             titleLayer.font = UIFont(name: "Helvetica", size: 56)
             titleLayer.foregroundColor = UIColor.black.cgColor
-            titleLayer.backgroundColor = UIColor.white.cgColor
-            titleLayer.opacity = 0
+            titleLayer.shadowOpacity = 0.5
+            titleLayer.alignmentMode = CATextLayerAlignmentMode.left
+            titleLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: pageHeight)
+            titleLayer.isWrapped = true
+            titleLayer.fontSize = 70
+            titleLayer.shadowOpacity = 0
+            titleLayer.bounds.size.width = size.width - 70
+            titleLayer.bounds.size.height = pageHeight - 70
             
             animationParentLayer.addSublayer(titleLayer)
             parentLayer.addSublayer(animationParentLayer)
+            
+//            parentLayer.insertSublayer(animationParentLayer, at: 1)
             
             //Fade in animation
             
@@ -263,7 +282,7 @@ class VideoCompositor {
             animation.fillMode = CAMediaTimingFillMode.forwards;
             animation.isRemovedOnCompletion = false
             //animation.autoreverses  = true
-            titleLayer.add(animation, forKey: "opacity")
+            animationParentLayer.add(animation, forKey: "opacity")
 
             
             //Fade out animation
@@ -285,7 +304,7 @@ class VideoCompositor {
             fadeOutAnimation.fillMode = CAMediaTimingFillMode.forwards;
             fadeOutAnimation.isRemovedOnCompletion = false
             
-            animationParentLayer.add(fadeOutAnimation, forKey: "opacity")
+            //titleLayer.add(fadeOutAnimation, forKey: "opacity")
             
 //            let fadeInAndOut = CAAnimationGroup()
 //            fadeInAndOut.animations = [animation, fadeOutAnimation]
@@ -294,7 +313,7 @@ class VideoCompositor {
 //            fadeInAndOut.isRemovedOnCompletion = false
 //            titleLayer.add(fadeInAndOut, forKey: nil)
             
-            //print("PAGE \(page.0) IN \(startTimeMilliseconds) OUT \(outTimeMilliseconds)")
+            print("PAGE \(page.0) IN \(startTimeMilliseconds) OUT \(outTimeMilliseconds) LAYER \(parentLayer.sublayers)")
         }
         
     }
