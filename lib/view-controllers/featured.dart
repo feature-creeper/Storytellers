@@ -38,6 +38,7 @@ class _FeaturedState extends State<Featured> {
             itemCount: widget.bookIds.length,
             itemBuilder: (context, index) {
               return Row(
+                // mainAxisSize: MainAxisSize.max,
                 children: [
                   FutureBuilder<Book>(
                       future: _getBook(widget.bookIds[index]),
@@ -127,9 +128,12 @@ class __BookThumbnailState extends State<_BookThumbnail> {
                   }),
           ),
           SizedBox(height: 5),
-          Text(
-            widget.book.title,
-            style: TextStyle(fontWeight: FontWeight.bold),
+          Container(
+            width: 90,
+            child: Text(
+              widget.book.title,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
           Text("Author")
         ],
